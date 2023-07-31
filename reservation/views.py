@@ -23,6 +23,7 @@ class CreateReservation(generic.edit.CreateView):
     model = Reservation
     form_class = ReservationForm
     template_name = 'create_reservation.html'
+    success_url = reverse_lazy('reservation:home')
 
 class UpdateReservation(generic.edit.UpdateView):
     model = Reservation
