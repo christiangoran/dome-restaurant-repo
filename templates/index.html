@@ -14,5 +14,7 @@
   <li>No reservations yet.</li>
 {% endfor %}
 </ul>
+<button><a href="{% url 'reservation:create' %}">Create a Reservation</a></button>
+<button><a href="#">Update a Reservation</a></button>
 
 {%endblock%}

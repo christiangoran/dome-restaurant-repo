@@ -19,15 +19,15 @@ class DetailReservation(generic.DetailView):
 
 class CreateReservation(generic.edit.CreateView):
     model = Reservation
-    fields = ['user', 'date', 'start_time', 'end_time', 'notes', 'table', 'number_of_guests', 'image']
-    template_name = 'create.html'
+    fields = ['user', 'name', 'customer_email', 'date', 'time', 'end_time', 'notes', 'table', 'number_of_guests']
+    template_name = 'create_reservation.html'
 
 class UpdateReservation(generic.edit.UpdateView):
     model = Reservation
     fields = ['user', 'date', 'start_time', 'end_time', 'notes', 'table', 'number_of_guests', 'image']
-    template_name = 'update.html'
+    template_name = 'update_reservation.html'
 
 class DeleteReservation(generic.edit.DeleteView):
     model = Reservation
     success_url = reverse_lazy('reservations:index')
-    template_name = 'delete.html'
+    template_name = 'delete_reservation.html'
