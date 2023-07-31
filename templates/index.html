@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Reservations</h2>
+<ul>
+{% for reservation in latest_reservation_list %}
+  <li>
+    <a href="{% url 'reservation:detail' reservation.id %}">
+      {{ reservation.name }} on {{ reservation.date }}
+    </a>
+  </li>
+{% empty %}
+  <li>No reservations yet.</li>
+{% endfor %}
+</ul>
+
+{%endblock%}
