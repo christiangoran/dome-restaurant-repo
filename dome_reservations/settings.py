@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dome-restaurant-hero.herokuapp.com', 'dome-restaurant-hero-9071346b8ec2.herokuapp.com', '8000-christiango-domerestaur-b4alb8kbqmj.ws-eu102.gitpod.io']
+ALLOWED_HOSTS = ['dome-restaurant-hero.herokuapp.com', 'dome-restaurant-hero-9071346b8ec2.herokuapp.com', '8000-christiango-domerestaur-b4alb8kbqmj.ws-eu102.gitpod.io', '127.0.0.1']
 
 
 # Application definition
