@@ -3,6 +3,17 @@
 {% block content %}
 
 <h2>Reservation Details</h2>
-<p>TESTING</p>
+
+<p><strong>User:</strong> {{ reservation.user }}</p>
+<p><strong>Date:</strong> {{ reservation.date }}</p>
+<p><strong>Time:</strong> {{ reservation.time }}</p>
+<p><strong>End Time:</strong> {{ reservation.end_time }}</p>
+<p><strong>Notes:</strong> {{ reservation.notes }}</p>
+<p><strong>Table:</strong> {{ reservation.table }}</p>
+<p><strong>Number of Guests:</strong> {{ reservation.number_of_guests }}</p>
+<p><strong>Customer Email:</strong> {{ reservation.customer_email }}</p>
+
+<button><a href="#">Update</a></button>
+<button><a href="#">Delete</a></button>
 
 {%endblock%}
