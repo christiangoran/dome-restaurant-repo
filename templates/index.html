@@ -7,7 +7,7 @@
 {% for reservation in latest_reservation_list %}
   <li>
     <a href="{% url 'reservation:detail' reservation.id %}">
-      {{ reservation.name }} on {{ reservation.date }}
+      {{ reservation.name }} on {{ reservation.date }} at {{ reservation.time }}
     </a>
   </li>
 {% empty %}

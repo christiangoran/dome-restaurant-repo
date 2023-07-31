@@ -11,7 +11,7 @@ class IndexReservation(generic.ListView):
     context_object_name = 'latest_reservation_list'
 
     def get_queryset(self):
-        return Reservation.objects.filter(date__lte=timezone.now()).order_by('-date')
+        return Reservation.objects.all().order_by('-date')
 
 class DetailReservation(generic.DetailView):
     model = Reservation

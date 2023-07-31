@@ -7,7 +7,6 @@ class Reservation(models.Model):
     name = models.CharField(max_length=100)
     date = models.DateField()
     time = models.TimeField()
-    start_time = models.TimeField()
     end_time = models.TimeField()
     notes = models.TextField(null=True, blank=True)
     table = models.ForeignKey('Table', on_delete=models.CASCADE)
