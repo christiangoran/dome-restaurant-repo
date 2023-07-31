@@ -3,6 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 from django.views import generic
 from django.utils import timezone
+from .forms import ReservationForm
+from .models import Reservation, Table
 
 from .models import Reservation, Table
 
@@ -19,7 +21,7 @@ class DetailReservation(generic.DetailView):
 
 class CreateReservation(generic.edit.CreateView):
     model = Reservation
-    fields = ['user', 'name', 'customer_email', 'date', 'time', 'end_time', 'notes', 'table', 'number_of_guests']
+    form_class = ReservationForm
     template_name = 'create_reservation.html'
 
 class UpdateReservation(generic.edit.UpdateView):

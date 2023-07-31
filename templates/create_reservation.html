@@ -4,9 +4,10 @@
 
 <h2>Create Reservation:</h2>
 
-
-
-<button><a href="#">Update</a></button>
-<button><a href="#">Delete</a></button>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create</button>
+</form>
 
 {%endblock%}
