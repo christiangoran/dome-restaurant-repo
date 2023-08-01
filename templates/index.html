@@ -9,11 +9,8 @@
 {% block content %}
 
 <div class="container m-3">
-    <!-- Search querys -->
     {% if request.user.is_staff %}
-        <!-- you can add search forms here -->
     {% endif %}
-    <!-- Manage bookings table -->
     <div class="form-style">
         <h1 class="text-center">Reservation List</h1>
         <table class="table table-striped table-hover">
@@ -72,6 +69,6 @@
     </div>
 </div>
 
-<button><a href="{% url 'reservation:create' %}">Create a Reservation</a></button>
+<a href="{% url 'reservation:create' %}" class="btn btn-success">Create a Reservation</a>
 
 {%endblock%}
