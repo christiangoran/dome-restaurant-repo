@@ -13,7 +13,7 @@
 <p><strong>Number of Guests:</strong> {{ reservation.number_of_guests }}</p>
 <p><strong>Customer Email:</strong> {{ reservation.customer_email }}</p>
 
-<button><a href="#">Update</a></button>
+<button><a href="{% url 'reservation:update' reservation.id %}">Update</a></button>
 <button><a href="#">Delete</a></button>
 
 {%endblock%}

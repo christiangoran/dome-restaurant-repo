@@ -27,8 +27,9 @@ class CreateReservation(generic.edit.CreateView):
 
 class UpdateReservation(generic.edit.UpdateView):
     model = Reservation
-    fields = ['user', 'date', 'start_time', 'end_time', 'notes', 'table', 'number_of_guests', 'image']
+    form_class = ReservationForm
     template_name = 'update_reservation.html'
+    success_url = reverse_lazy('reservation:home')
 
 class DeleteReservation(generic.edit.DeleteView):
     model = Reservation
