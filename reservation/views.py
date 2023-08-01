@@ -10,14 +10,10 @@ from .models import Reservation, Table
 
 class IndexReservation(generic.ListView):
     template_name = 'index.html'
-    context_object_name = 'latest_reservation_list'
+    context_object_name = 'reservations'
 
     def get_queryset(self):
         return Reservation.objects.all().order_by('-date')
-
-class DetailReservation(generic.DetailView):
-    model = Reservation
-    template_name = 'detail.html'
 
 class CreateReservation(generic.edit.CreateView):
     model = Reservation
@@ -33,5 +29,5 @@ class UpdateReservation(generic.edit.UpdateView):
 
 class DeleteReservation(generic.edit.DeleteView):
     model = Reservation
-    success_url = reverse_lazy('reservations:index')
     template_name = 'delete_reservation.html'
+    success_url = reverse_lazy('reservation:home')

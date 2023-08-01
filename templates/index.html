@@ -1,19 +1,77 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'reservation/css/reservation.css' %}">
+{% endblock %}
 
 {% block content %}
 
-<h2>Reservations</h2>
-<ul>
-{% for reservation in latest_reservation_list %}
-  <li>
-    <a href="{% url 'reservation:detail' reservation.id %}">
-      {{ reservation.name }} on {{ reservation.date }} at {{ reservation.time }}
-    </a>
-  </li>
-{% empty %}
-  <li>No reservations yet.</li>
-{% endfor %}
-</ul>
+<div class="container m-3">
+    <!-- Search querys -->
+    {% if request.user.is_staff %}
+        <!-- you can add search forms here -->
+    {% endif %}
+    <!-- Manage bookings table -->
+    <div class="form-style">
+        <h1 class="text-center">Reservation List</h1>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Reservation ID</th>
+                    <th>User</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>End Time</th>
+                    <th>Table</th>
+                    <th>Number of Guests</th>
+                    <th>Customer Email</th>
+                    <th><span class="sr-only">Edit Button Column</span></th>
+                    <th><span class="sr-only">Delete Button Column</span></th>
+                </tr>
+            </thead>
+            {% for reservation in reservations %}
+            <tbody>
+                <tr>
+                    <td>
+                        {{ reservation.id }}
+                    </td>
+                    <td>
+                        {{ reservation.name }}
+                    </td>
+                    <td>
+                        {{ reservation.date }}
+                    </td>
+                    <td>
+                        {{ reservation.time }}
+                    </td>
+                    <td>
+                        {{ reservation.end_time }}
+                    </td>
+                    <td>
+                        {{ reservation.table }}
+                    </td>
+                    <td>
+                        {{ reservation.number_of_guests }}
+                    </td>
+                    <td>
+                        {{ reservation.customer_email }}
+                    </td>
+                    <td>
+                        <a href="{% url 'reservation:update' reservation.id %}" class="btn btn-primary">Edit</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'reservation:delete' reservation.id %}" class="btn btn-danger">Delete</a>
+
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
 <button><a href="{% url 'reservation:create' %}">Create a Reservation</a></button>
 
 {%endblock%}
