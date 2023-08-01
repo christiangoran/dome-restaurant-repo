@@ -3,72 +3,11 @@
 
 {% block css %}
 {{ block.super }}
-<link rel="stylesheet" href="{% static 'reservation/css/reservation.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock %}
 
 {% block content %}
 
-<div class="container m-3">
-    {% if request.user.is_staff %}
-    {% endif %}
-    <div class="form-style">
-        <h1 class="text-center">Reservation List</h1>
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>Reservation ID</th>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>End Time</th>
-                    <th>Table</th>
-                    <th>Number of Guests</th>
-                    <th>Customer Email</th>
-                    <th><span class="sr-only">Edit Button Column</span></th>
-                    <th><span class="sr-only">Delete Button Column</span></th>
-                </tr>
-            </thead>
-            {% for reservation in reservations %}
-            <tbody>
-                <tr>
-                    <td>
-                        {{ reservation.id }}
-                    </td>
-                    <td>
-                        {{ reservation.name }}
-                    </td>
-                    <td>
-                        {{ reservation.date }}
-                    </td>
-                    <td>
-                        {{ reservation.time }}
-                    </td>
-                    <td>
-                        {{ reservation.end_time }}
-                    </td>
-                    <td>
-                        {{ reservation.table }}
-                    </td>
-                    <td>
-                        {{ reservation.number_of_guests }}
-                    </td>
-                    <td>
-                        {{ reservation.customer_email }}
-                    </td>
-                    <td>
-                        <a href="{% url 'reservation:update' reservation.id %}" class="btn btn-primary">Edit</a>
-                    </td>
-                    <td>
-                        <a href="{% url 'reservation:delete' reservation.id %}" class="btn btn-danger">Delete</a>
-
-                    </td>
-                </tr>
-            </tbody>
-            {% endfor %}
-        </table>
-    </div>
-</div>
-
-<a href="{% url 'reservation:create' %}" class="btn btn-success">Create a Reservation</a>
+<h1>Dome Restaurant</h1>
 
 {%endblock%}

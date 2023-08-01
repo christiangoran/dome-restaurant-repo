@@ -8,18 +8,22 @@ from .models import Reservation, Table
 
 from .models import Reservation, Table
 
-class IndexReservation(generic.ListView):
+class HomeView(generic.TemplateView):
     template_name = 'index.html'
+    context_object_name = 'reservations'
+
+class IndexReservation(generic.ListView):
+    template_name = 'view_reservations.html'
     context_object_name = 'reservations'
 
     def get_queryset(self):
         if self.request.user.is_authenticated:
             if self.request.user.is_staff:
                 # This is a staff user, show all reservations
-                return Reservation.objects.all().order_by('-date')
+                return Reservation.objects.all().order_by('date')
             else:
                 # This is a regular user, show only their reservations
-                return Reservation.objects.filter(user=self.request.user).order_by('-date')
+                return Reservation.objects.filter(user=self.request.user).order_by('date')
         else:
             # This is an anonymous user, show no reservations
             return Reservation.objects.none()
