@@ -1,69 +1,69 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block content %}
 
 <div class="container m-3">
-    {% if request.user.is_staff %}
-    {% endif %}
-    <div class="form-style">
-        <h1 class="text-center">Reservation List</h1>
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>Reservation ID</th>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>End Time</th>
-                    <th>Table</th>
-                    <th>Number of Guests</th>
-                    <th>Customer Email</th>
-                    <th><span class="sr-only">Edit Button Column</span></th>
-                    <th><span class="sr-only">Delete Button Column</span></th>
-                </tr>
-            </thead>
-            {% for reservation in reservations %}
-            <tbody>
-                <tr>
-                    <td>
-                        {{ reservation.id }}
-                    </td>
-                    <td>
-                        {{ reservation.name }}
-                    </td>
-                    <td>
-                        {{ reservation.date }}
-                    </td>
-                    <td>
-                        {{ reservation.time }}
-                    </td>
-                    <td>
-                        {{ reservation.end_time }}
-                    </td>
-                    <td>
-                        {{ reservation.table }}
-                    </td>
-                    <td>
-                        {{ reservation.number_of_guests }}
-                    </td>
-                    <td>
-                        {{ reservation.customer_email }}
-                    </td>
-                    <td>
-                        <a href="{% url 'reservation:update' reservation.id %}" class="btn btn-primary">Edit</a>
-                    </td>
-                    <td>
-                        <a href="{% url 'reservation:delete' reservation.id %}" class="btn btn-danger">Delete</a>
-
-                    </td>
-                </tr>
-            </tbody>
-            {% endfor %}
-        </table>
-    </div>
+  {% if user.is_authenticated %} {% if request.user.is_staff %}
+  <p>Welcome Staff User. Here you can see all the reservations made!</p>
+  {% endif %}
+  <!-- Existing reservation table code goes here -->
+  {% else %}
+  <p>
+    You are not logged in yet, please
+    <a href="{% url 'account_login' %}">login</a> or
+    <a href="{% url 'account_signup' %}">create an account</a> to create and
+    view your reservations.
+  </p>
+  {% endif %}
+  <div class="form-style">
+    <h2 class="text-center">Reservation List</h2>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Reservation ID</th>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>End Time</th>
+          <th>Table</th>
+          <th>Number of Guests</th>
+          <th>Customer Email</th>
+          <th><span class="sr-only">Edit Button Column</span></th>
+          <th><span class="sr-only">Delete Button Column</span></th>
+        </tr>
+      </thead>
+      {% for reservation in reservations %}
+      <tbody>
+        <tr>
+          <td>{{ reservation.id }}</td>
+          <td>{{ reservation.name }}</td>
+          <td>{{ reservation.date }}</td>
+          <td>{{ reservation.time }}</td>
+          <td>{{ reservation.end_time }}</td>
+          <td>{{ reservation.table }}</td>
+          <td>{{ reservation.number_of_guests }}</td>
+          <td>{{ reservation.customer_email }}</td>
+          <td>
+            <a
+              href="{% url 'reservation:update' reservation.id %}"
+              class="btn btn-primary"
+              >Edit</a
+            >
+          </td>
+          <td>
+            <a
+              href="{% url 'reservation:delete' reservation.id %}"
+              class="btn btn-danger"
+              >Delete</a
+            >
+          </td>
+        </tr>
+      </tbody>
+      {% endfor %}
+    </table>
+  </div>
+  <div class="create-btn me-auto">
+    <a href="{% url 'reservation:create' %}" class="btn btn-success"
+      >Create a Reservation</a>
+  </div>
 </div>
-
-<a href="{% url 'reservation:create' %}" class="btn btn-success">Create a Reservation</a>
 
 {%endblock%}

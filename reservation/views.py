@@ -1,18 +1,19 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect, Http404
-from django.urls import reverse, reverse_lazy
+from django.http import  Http404
+from django.urls import  reverse_lazy
 from django.views import generic
 from django.utils import timezone
 from .forms import ReservationForm
-from .models import Reservation, Table
-
-from .models import Reservation, Table
+from .models import Reservation
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.list import ListView
 
 class HomeView(generic.TemplateView):
     template_name = 'index.html'
     context_object_name = 'reservations'
 
-class IndexReservation(generic.ListView):
+class IndexReservation(LoginRequiredMixin, ListView):
+    login_url = '/accounts/login' # If user is not logged in, redirect to /login/
     template_name = 'view_reservations.html'
     context_object_name = 'reservations'
 
@@ -27,6 +28,7 @@ class IndexReservation(generic.ListView):
         else:
             # This is an anonymous user, show no reservations
             return Reservation.objects.none()
+        
 
             
 
