@@ -24,6 +24,15 @@ li {
     font-size: 24px;
 }
 
+.btn-cancel {
+    margin: 10px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
 .hero-container {
     position: relative;
 }

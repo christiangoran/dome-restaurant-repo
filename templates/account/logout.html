@@ -5,17 +5,11 @@
 {% block head_title %}{% trans "Sign Out" %}{% endblock %}
 
 {% block content %}
-<div class="container text-center">
     <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
+        <div class="col-md-8 mt-3 offset-md-2 mx-auto text-center">
             <h2>{% trans "Sign Out" %}</h2>
 
             <p>{% trans 'Are you sure you want to sign out?' %}</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
-
             <form method="post" action="{% url 'account_logout' %}">
                 {% csrf_token %}
                 {% if redirect_field_value %}

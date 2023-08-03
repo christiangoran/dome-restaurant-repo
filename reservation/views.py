@@ -30,7 +30,7 @@ class CreateReservation(generic.edit.CreateView):
     template_name = 'create_reservation.html'
     model = Reservation
     form_class = ReservationForm
-    success_url = reverse_lazy('reservation:home') 
+    success_url = reverse_lazy('reservation:view') 
 
     def form_valid(self, form):
         """This method is called when valid form data has been POSTed.
@@ -44,7 +44,7 @@ class UpdateReservation(generic.edit.UpdateView):
     template_name = 'update_reservation.html'
     model = Reservation
     form_class = ReservationForm
-    success_url = reverse_lazy('reservation:home')
+    success_url = reverse_lazy('reservation:view')
 
     def get_object(self, queryset=None):
         """This method returns the object that the view will display."""
@@ -58,7 +58,7 @@ class UpdateReservation(generic.edit.UpdateView):
 class DeleteReservation(generic.edit.DeleteView):
     template_name = 'delete_reservation.html'
     model = Reservation
-    success_url = reverse_lazy('reservation:home')
+    success_url = reverse_lazy('reservation:view')
 
     def get_object(self, queryset=None):
         """This method returns the object that the view will display."""

@@ -1,13 +1,19 @@
-{% extends "base.html" %}
-
+{% extends "base.html" %} 
 {% block content %}
 
-<h2>Update Reservation:</h2>
-
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Update</button>
-</form>
+  <div class="row">
+    <div class="col-md-4 col-sm-6 col-10 mx-auto">
+      <h2 class="text-center">Update Reservation:</h2>
+      <div class="form-group">
+        <form method="POST">
+          {% csrf_token %} 
+          {{ form.as_p }}
+          <div class="text-center">
+            <button type="submit" class="btn btn-success">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
 {%endblock%}
