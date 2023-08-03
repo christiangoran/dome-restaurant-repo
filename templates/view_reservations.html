@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
-<div class="container text-center reservations-table m-3">
+<div class="container text-center reservations-table m-3 mx-auto">
   {% if user.is_authenticated %} {% if request.user.is_staff %}
   <p>Welcome Staff User. Here you can see all the reservations made!</p>
   {% endif %}
@@ -21,7 +21,6 @@
           <th>Name</th>
           <th>Date</th>
           <th>Time</th>
-          <th>End Time</th>
           <th>Table</th>
           <th>Number of Guests</th>
           <th>Customer Email</th>
@@ -35,7 +34,6 @@
           <td>{{ reservation.name }}</td>
           <td>{{ reservation.date }}</td>
           <td>{{ reservation.time }}</td>
-          <td>{{ reservation.end_time }}</td>
           <td>{{ reservation.table }}</td>
           <td>{{ reservation.number_of_guests }}</td>
           <td>{{ reservation.customer_email }}</td>
