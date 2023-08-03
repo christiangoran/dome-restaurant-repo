@@ -30,7 +30,7 @@ class CreateReservation(generic.edit.CreateView):
     template_name = 'create_reservation.html'
     model = Reservation
     form_class = ReservationForm
-    success_url = reverse_lazy('reservation:home')
+    success_url = reverse_lazy('reservation:home') 
 
     def form_valid(self, form):
         """This method is called when valid form data has been POSTed.
