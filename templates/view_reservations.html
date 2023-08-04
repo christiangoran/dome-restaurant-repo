@@ -21,7 +21,9 @@
           <th>Name</th>
           <th>Date</th>
           <th>Time</th>
+          {% if request.user.is_staff %}
           <th>Table</th>
+          {% endif %}
           <th>Number of Guests</th>
           <th>Customer Email</th>
           <th><span class="sr-only">Edit Button Column</span></th>
@@ -34,7 +36,9 @@
           <td>{{ reservation.name }}</td>
           <td>{{ reservation.date }}</td>
           <td>{{ reservation.get_time_display }}</td>
+          {% if request.user.is_staff %}
           <td>{{ reservation.table }}</td>
+          {% endif %}
           <td>{{ reservation.number_of_guests }}</td>
           <td>{{ reservation.customer_email }}</td>
           <td>
