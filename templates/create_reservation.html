@@ -6,7 +6,8 @@
     <h2 class="text-center">Create Reservation:</h2>
     <div class="form-group">
       <form method="POST">
-        {% csrf_token %} {{ form.as_p }}
+        {% csrf_token %} 
+        {{ form.as_p }}
         <div class="text-center">
           <button type="submit" class="btn btn-success">Create</button>
         </div>

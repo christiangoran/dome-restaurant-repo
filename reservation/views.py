@@ -1,7 +1,8 @@
+from typing import Any, Dict
 from django.http import Http404
 from django.urls import reverse_lazy
 from django.views import generic
-from .forms import ReservationForm
+from .forms import ReservationForm, SearchReservationForm
 from .models import Reservation, Table
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.list import ListView
@@ -16,15 +17,13 @@ class IndexReservation(LoginRequiredMixin, ListView):
     template_name = 'view_reservations.html'
     login_url = '/accounts/login'  # If user is not logged in, redirect to /login/
     context_object_name = 'reservations'
+    model = Reservation
 
-    def get_queryset(self):
-        if self.request.user.is_authenticated:
-            if self.request.user.is_staff:
-                # This is a staff user, show all reservations
-                return Reservation.objects.all().order_by('date', 'time')
-            else:
-                # This is a regular user, show only their reservations
-                return Reservation.objects.filter(user=self.request.user).order_by('date')
+    def get_context_data(self, **kwargs):
+        context =  super().get_context_data(**kwargs)
+        context['search_form'] = SearchReservationForm(self .request.GET or None)
+        return context
+
 
 
 class CreateReservation(generic.edit.CreateView):

@@ -67,3 +67,20 @@ class ReservationForm(forms.ModelForm):
 
         if not tables_with_capacity:
             raise ValidationError('Sorry we do not have a table available for that date and time')      
+        
+
+class SearchReservationForm(forms.Form):
+    q = forms.CharField(label='Search Booking Ref', required=False, widget=forms.TextInput(
+        attrs={
+            'autocomplete': 'off', 
+            'aria-label': 'Search Booking by reference', 
+            'placeholder': 'Search Booking Ref',
+            'class': 'form-control'
+            }))
+    d = forms.DateField(label='Search Booking Date', required=False, widget=forms.DateInput(
+        attrs={
+            'class': 'datepicker form-control', 
+            'autocomplete': 'off', 
+            'aria-label': 'Search Bookings by date', 
+            'placeholder': 'Search Booking Date',
+            }))
