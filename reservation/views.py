@@ -2,9 +2,10 @@ from django.http import Http404
 from django.urls import reverse_lazy
 from django.views import generic
 from .forms import ReservationForm
-from .models import Reservation
+from .models import Reservation, Table
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.list import ListView
+from django.contrib import messages
 
 
 class HomeView(generic.TemplateView):
@@ -33,11 +34,42 @@ class CreateReservation(generic.edit.CreateView):
     success_url = reverse_lazy('reservation:view') 
 
     def form_valid(self, form):
-        """This method is called when valid form data has been POSTed.
-        and ensures that the user creating the reservation is attached to the reservation.
-        record before saving it."""
+        """
+        Before form submission, assign table with lowest capacity
+        needed for booking guests
+        """
         form.instance.user = self.request.user
-        return super().form_valid(form)
+        date = form.cleaned_data['date']
+        time = form.cleaned_data['time']
+        guests = form.cleaned_data['number_of_guests']
+        # Filter tables with capacity greater or equal
+        # to the number of guests
+        tables_with_capacity = list(Table.objects.filter(
+            capacity__gte=guests
+        ))
+        # Get bookings on specified date
+        bookings_on_requested_date = Reservation.objects.filter(
+            date=date, time=time)
+        # Iterate over bookings to get tables not booked
+        for booking in bookings_on_requested_date:
+            for table in tables_with_capacity:
+                if table.table_number == booking.table.table_number:
+                    tables_with_capacity.remove(table)
+                    break
+        # Iterate over tables not booked to get lowest
+        # capacity table to assign to booking
+        lowest_capacity_table = tables_with_capacity[0]
+        for table in tables_with_capacity:
+            if table.capacity < lowest_capacity_table.capacity:
+                lowest_capacity_table = table
+        form.instance.table = lowest_capacity_table
+
+        messages.success(
+            self.request,
+            f'Booking confirmed for {guests} guests on {date}'
+        )
+
+        return super(CreateReservation, self).form_valid(form)
 
 
 class UpdateReservation(generic.edit.UpdateView):

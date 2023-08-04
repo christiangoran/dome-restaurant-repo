@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from cloudinary.models import CloudinaryField
 
 CAPACITY = ((2, "2"), (4, "4"), (6, "6"), (8, "8"), (10, "10"), (12, "12"))
 BOOKING_TIME = ((1, "12:00pm - 1:45pm"), (2, "2:00pm - 3:45pm"),
@@ -25,7 +24,6 @@ class Reservation(models.Model):
 
 class Table(models.Model):
     table_number = models.IntegerField(unique=True)
-    number_of_seats = models.IntegerField(default=2)
     capacity = models.IntegerField(choices=CAPACITY, default=2)
 
     def __str__(self):
