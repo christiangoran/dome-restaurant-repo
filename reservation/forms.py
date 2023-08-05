@@ -54,7 +54,9 @@ class ReservationForm(forms.ModelForm):
 
         #add booked table to list of tables with capacity
         if table_booked is not None:
-            if table_booked.capacity >= guests:
+            if table_booked.capacity >= guests and not any(
+                booking.table.table_number == table_booked.table_number 
+                for booking in bookings_on_requested_date):
                 tables_with_capacity.append(table_booked)   
 
         #throw validation errors on form
@@ -70,16 +72,17 @@ class ReservationForm(forms.ModelForm):
         
 
 class SearchReservationForm(forms.Form):
-    q = forms.CharField(label='Search Booking Ref', required=False, widget=forms.TextInput(
+    booking_email = forms.EmailField(label='Search Booking Email', required=False, widget=forms.TextInput(
         attrs={
             'autocomplete': 'off', 
-            'aria-label': 'Search Booking by reference', 
-            'placeholder': 'Search Booking Ref',
+            'aria-label': 'Search Booking by Email', 
+            'placeholder': 'Search Booking Email',
             'class': 'form-control'
             }))
-    d = forms.DateField(label='Search Booking Date', required=False, widget=forms.DateInput(
+    booking_date = forms.DateField(label='Search Booking Date', required=False, widget=forms.DateInput(
         attrs={
-            'class': 'datepicker form-control', 
+            'class': 'form-control', 
+            'type': 'date',
             'autocomplete': 'off', 
             'aria-label': 'Search Bookings by date', 
             'placeholder': 'Search Booking Date',

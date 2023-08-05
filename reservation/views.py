@@ -19,6 +19,19 @@ class IndexReservation(LoginRequiredMixin, ListView):
     context_object_name = 'reservations'
     model = Reservation
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        booking_email = self.request.GET.get('booking_email')
+        booking_date = self.request.GET.get('booking_date')
+
+        if booking_email:  # If booking_email is not None
+            queryset = queryset.filter(customer_email=booking_email)
+
+        if booking_date:
+            queryset = queryset.filter(date=booking_date)
+
+        return queryset    
+
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)
         context['search_form'] = SearchReservationForm(self .request.GET or None)
@@ -43,12 +56,14 @@ class CreateReservation(generic.edit.CreateView):
         guests = form.cleaned_data['number_of_guests']
         # Filter tables with capacity greater or equal
         # to the number of guests
+        # *__gte is a Django query filter that means greater than or equal to
         tables_with_capacity = list(Table.objects.filter(
             capacity__gte=guests
         ))
         # Get bookings on specified date
         bookings_on_requested_date = Reservation.objects.filter(
             date=date, time=time)
+        # ----Variables created for testing purposes----
         # Iterate over bookings to get tables not booked
         for booking in bookings_on_requested_date:
             for table in tables_with_capacity:
