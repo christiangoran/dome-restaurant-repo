@@ -7,6 +7,8 @@ from .models import Reservation, Table
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.list import ListView
 from django.contrib import messages
+import datetime
+
 
 
 class HomeView(generic.TemplateView):
@@ -20,17 +22,27 @@ class IndexReservation(LoginRequiredMixin, ListView):
     model = Reservation
 
     def get_queryset(self):
-        queryset = super().get_queryset()
-        booking_email = self.request.GET.get('booking_email')
-        booking_date = self.request.GET.get('booking_date')
+        if self.request.user.is_staff:
+            queryset = super().get_queryset()
+            booking_email = self.request.GET.get('booking_email')
+            booking_date = self.request.GET.get('booking_date')
 
-        if booking_email:  # If booking_email is not None
-            queryset = queryset.filter(customer_email=booking_email)
+            if booking_email:  # If booking_email is not None
+                queryset = queryset.filter(customer_email=booking_email)
 
-        if booking_date:
-            queryset = queryset.filter(date=booking_date)
+            if booking_date:
+                queryset = queryset.filter(date=booking_date)
 
-        return queryset    
+            queryset = queryset.filter(date__gte=datetime.date.today()-datetime.timedelta(days=1))    
+
+                # If user is staff, return all reservations from today onwards
+            return queryset
+            
+        else:
+            # If user is not staff, return only reservations made by user
+            return Reservation.objects.filter(user=self.request.user)
+        
+
 
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)

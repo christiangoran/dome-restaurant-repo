@@ -4,7 +4,6 @@ from .models import Reservation, BOOKING_TIME, Table
 from django.core.exceptions import ValidationError, ObjectDoesNotExist
 import datetime
 
-
 class ReservationForm(forms.ModelForm):
     time = forms.ChoiceField(choices=BOOKING_TIME, widget=forms.Select(
         attrs={'class': 'form-control'}))
