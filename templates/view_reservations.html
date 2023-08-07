@@ -5,22 +5,22 @@
 
   <p>Welcome Staff User. Here you can see all the reservations made!</p>
     <!-- Search querys -->
-    <div class="col-10 col-md-2 mx-auto">
-      <div class="row">
-        <form method='GET' action="{% url 'reservation:view' %}">
+
+      <div class="row justify-content-center">
+        <form method='GET' action="{% url 'reservation:view' %}" class="col-10 col-md-4 col-lg-2">
           {{ search_form.booking_email.label_tag }} {{ search_form.booking_email }}
             <button class="btn p-0 search-btn" type='submit' value="Search Booking by ref" aria-label="Click to search by booking ref">
                 <i class="fas fa-search"></i>
             </button>
         </form>
-        <form method='GET' action="{% url 'reservation:view' %}">
+        <form method='GET' action="{% url 'reservation:view' %}" class="col-10 col-md-4 col-lg-2">
           {{ search_form.booking_date.label_tag }} {{ search_form.booking_date }}
             <button class="btn p-0 search-btn" type='submit' value="Search Booking by ref" aria-label="Click to search by date">
                 <i class="fas fa-search"></i>
             </button>
         </form>
-      </div>
-      </div>
+        </div>
+
   {% endif %}
   <!-- Existing reservation table code goes here -->
   {% else %}

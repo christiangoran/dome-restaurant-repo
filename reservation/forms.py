@@ -17,7 +17,7 @@ class ReservationForm(forms.ModelForm):
             'customer_email': forms.TextInput(attrs={'class': 'form-control'}),
             'date': DateInput(attrs={'class': 'form-control', 'type': 'date'}),
             'notes': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
-            'number_of_guests': forms.TextInput(attrs={'class': 'form-control', 'type': 'number', 'min': 1, 'max': 12}),
+            'number_of_guests': forms.TextInput(attrs={'class': 'form-control', 'type': 'number', 'min': 1, 'max': 8}),
 
         }
 
@@ -39,18 +39,20 @@ class ReservationForm(forms.ModelForm):
         tables_with_capacity = list(Table.objects.filter(
             capacity__gte=guests
         ))
-    
+
         # Get bookings on specified date
         bookings_on_requested_date = Reservation.objects.filter(
             date=date, time=time)
     
         # Iterate over bookings to get tables not booked
-        for booking in bookings_on_requested_date:
-            for table in tables_with_capacity:
-                if table.table_number == booking.table.table_number:
-                    tables_with_capacity.remove(table)
-                    break
+        new_tables_with_capacity = []
+        for table in tables_with_capacity:
+            if not any (table.table_number == 
+                        booking.table.table_number for booking in bookings_on_requested_date):
+                new_tables_with_capacity.append(table)
 
+        tables_with_capacity = new_tables_with_capacity
+  
         #add booked table to list of tables with capacity
         if table_booked is not None:
             if table_booked.capacity >= guests and not any(
@@ -61,13 +63,12 @@ class ReservationForm(forms.ModelForm):
         #throw validation errors on form
         if date < datetime.date.today():
             raise ValidationError('Sorry you have to book a future date')
-        
-        if table_booked is not None:
-            if table_booked.capacity < guests:
-                raise ValidationError('Sorry we do not have a table with that capacity available')
+    
+        if bookings_on_requested_date.count() >= 5:
+            raise ValidationError('Sorry we do not have a table available for that date and time')
 
         if not tables_with_capacity:
-            raise ValidationError('Sorry we do not have a table available for that date and time')      
+            raise ValidationError('Sorry we do not have a table with that capacity available')      
         
 
 class SearchReservationForm(forms.Form):
