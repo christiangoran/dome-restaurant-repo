@@ -66,6 +66,17 @@ a {
     margin-top: 20vh;
 }
 
+.container-message {
+    max-width: 800px;
+    min-width: 400px;
+    margin-top: 10vh;
+    background-color: antiquewhite;
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    margin-right: 1vw;
+}
+
 td,
 th {
     padding: 6px;
