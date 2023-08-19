@@ -94,19 +94,25 @@
     <div class="container-message">
       <div class="row">
         <div class="col-12 mx-auto">
-          {% if messages %}
-          {% for message in messages %}
+          {% if messages %} {% for message in messages %}
 
-          <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+          <div
+            class="alert {{ message.tags }} alert-dismissible fade show"
+            id="msg"
+            role="alert"
+          >
             {{ message|safe }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
           </div>
 
-          {% endfor %}
-          {% endif %}
-       
+          {% endfor %} {% endif %}
+        </div>
       </div>
-    </div>
     </div>
 
     <main class="flex-shrink-0 main-bg">
@@ -125,18 +131,10 @@
       </p>
     </footer>
 
-    <!-- Initialize datepicker -->
-<script>
-
-setTimeout(function() {
-    let messages = document.getElementById('msg');
-    let alert = new.Bootstrap.Alert(messages);
-    alert.close();
-  }, 3000);
-
-    $(document).ready(function() {
-      $(".datepicker").datepicker();
-    });
+    <script>
+      setTimeout(function () {
+        $("#msg").alert("close");
+      }, 3000);
     </script>
   </body>
 </html>
