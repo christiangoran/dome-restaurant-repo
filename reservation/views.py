@@ -142,3 +142,14 @@ class DeleteReservation(generic.edit.DeleteView):
             return reservation
         else:
             raise Http404("You are not authorized to edit this reservation.")
+
+    def delete(self, request, *args, **kwargs):
+        """
+        After the reservation is deleted, this will show a notification
+        """
+        reservation = self.get_object()
+        messages.success(
+            self.request,
+            f'Booking cancelled for {reservation.number_of_guests} guests on {reservation.date} at {reservation.get_time_display()}'
+        )
+        return super().delete(request, *args, **kwargs)
