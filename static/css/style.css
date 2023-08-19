@@ -67,8 +67,7 @@ a {
 }
 
 .container-message {
-    max-width: 800px;
-    min-width: 400px;
+    width: auto;
     margin-top: 10vh;
     background-color: antiquewhite;
     position: absolute;

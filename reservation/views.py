@@ -111,6 +111,23 @@ class UpdateReservation(generic.edit.UpdateView):
             return reservation
         else:
             raise Http404("You are not authorized to edit this reservation.")
+        
+        
+    def form_valid(self, form):
+        """
+        After the form is submitted, this wills end a success message with info
+        """
+        date = form.cleaned_data['date']
+        time = form.cleaned_data['time']
+        guests = form.cleaned_data['number_of_guests']
+
+        
+        messages.success(
+            self.request,
+            f'Booking updated for {guests} guests on {date} at {form.instance.get_time_display()}'
+        )
+
+        return super(UpdateReservation, self).form_valid(form)
 
 
 class DeleteReservation(generic.edit.DeleteView):
