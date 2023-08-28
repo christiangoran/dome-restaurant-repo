@@ -1,8 +1,9 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
-from .models import Table
+from .models import Table, Reservation
 from .forms import ReservationForm
 import datetime
+
 
 class ReservationFormTestCase(TestCase):
 
@@ -13,6 +14,9 @@ class ReservationFormTestCase(TestCase):
         # Create some Table instances
         self.table1 = Table.objects.create(table_number=1, capacity=4)
         self.table2 = Table.objects.create(table_number=2, capacity=2)
+        self.table3 = Table.objects.create(table_number=3, capacity=2)
+        self.table4 = Table.objects.create(table_number=4, capacity=2)
+        self.table5 = Table.objects.create(table_number=5, capacity=2)
     
     def test_valid_data(self):
         form = ReservationForm({
@@ -50,3 +54,68 @@ class ReservationFormTestCase(TestCase):
         })
         self.assertFalse(form.is_valid())
         self.assertEqual(form.errors, {'__all__': ['Sorry we do not have a table with that capacity available']})
+
+
+    def test_all_tables_reserved(self):
+
+        # Creating 5 reservations first so that all tables are reserved
+        Reservation.objects.create(
+            user=self.user,
+            table=self.table1,
+            name='Spanky McSpankerson',
+            date=datetime.date.today() + datetime.timedelta(days=1),
+            time=1,
+            number_of_guests=2,
+        )
+
+        Reservation.objects.create(
+            user=self.user,
+            table=self.table2,
+            name='Eggbert McEggerson',
+            date=datetime.date.today() + datetime.timedelta(days=1),
+            time=1,
+            number_of_guests=2,
+        )
+
+        Reservation.objects.create(
+            user=self.user,
+            table=self.table3,
+            name='Rooney McRooneyson',
+            date=datetime.date.today() + datetime.timedelta(days=1),
+            time=1,
+            number_of_guests=2,
+        )
+
+        Reservation.objects.create(
+            user=self.user,
+            table=self.table4,
+            name='Coolio Bonkers',
+            date=datetime.date.today() + datetime.timedelta(days=1),
+            time=1,
+            number_of_guests=2,
+        )
+
+        Reservation.objects.create(
+            user=self.user,
+            table=self.table5,
+            name='Mr Last Table',
+            date=datetime.date.today() + datetime.timedelta(days=1),
+            time=1,
+            number_of_guests=2,
+        )
+
+        # And now we try to create a new reservation
+        form = ReservationForm({
+            'name': 'Testy McTesterson',
+            'customer_email': 'testy.mctesterson@cool.com',
+            'date': datetime.date.today() + datetime.timedelta(days=1),
+            'time': 1,  # same as "12:00pm - 1:45pm" on website
+            'notes': 'This is a test',
+            'number_of_guests': 2,
+        })   
+
+        self.assertFalse(form.is_valid())  # The form should be invalid
+
+        expected_error = 'Sorry we do not have a table available for that date and time'
+        actual_error = str(form.errors['__all__'][0]) 
+        self.assertEqual(expected_error, actual_error)
