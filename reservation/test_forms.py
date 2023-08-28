@@ -8,7 +8,7 @@ class ReservationFormTestCase(TestCase):
 
     def setUp(self):
         # Create a user
-        self.user = User.objects.create(username='testuser', password='123456790')
+        self.user = User.objects.create(username='TestyMcTesterson', password='IamCool123')
 
         # Create some Table instances
         self.table1 = Table.objects.create(table_number=1, capacity=4)
