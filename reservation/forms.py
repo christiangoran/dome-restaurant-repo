@@ -23,9 +23,9 @@ class ReservationForm(forms.ModelForm):
 
     def clean(self):
 
-        date = self.cleaned_data['date']
-        time = self.cleaned_data['time']
-        guests = self.cleaned_data['number_of_guests']
+        date = self.cleaned_data.get('date', None)
+        time = self.cleaned_data.get('time', None)
+        guests = self.cleaned_data.get('number_of_guests', None)
     
         table_booked = None
     
