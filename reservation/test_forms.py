@@ -7,16 +7,19 @@ import datetime
 
 class ReservationFormTestCase(TestCase):
 
+
     def setUp(self):
         # Create a user
         self.user = User.objects.create(username='TestyMcTesterson', password='IamCool123')
 
         # Create some Table instances
+        # And we need to create 5 to match validation error code in forms.py
         self.table1 = Table.objects.create(table_number=1, capacity=4)
         self.table2 = Table.objects.create(table_number=2, capacity=2)
         self.table3 = Table.objects.create(table_number=3, capacity=2)
         self.table4 = Table.objects.create(table_number=4, capacity=2)
         self.table5 = Table.objects.create(table_number=5, capacity=2)
+
     
     def test_valid_data(self):
         form = ReservationForm({
@@ -119,3 +122,8 @@ class ReservationFormTestCase(TestCase):
         expected_error = 'Sorry we do not have a table available for that date and time'
         actual_error = str(form.errors['__all__'][0]) 
         self.assertEqual(expected_error, actual_error)
+
+
+    def test_fields_are_explicit_in_form_metaclass(self):
+        form = ReservationForm()
+        self.assertEqual(form.Meta.fields, ['name', 'customer_email', 'date', 'time', 'notes', 'number_of_guests'])
