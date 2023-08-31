@@ -111,6 +111,25 @@ td a {
     margin: 10px;
 }
 
+.food-container {
+    margin: 20vh;
+}
+
+
+.food-image {
+    width: 100%;
+    height: 100%;
+    max-height: 700px;
+    object-fit: contain;
+    
+}
+
+.food-image-left {
+    width: 100%;
+    margin-top: 25px;
+    object-fit: contain;
+}
+
 /* FOOTER */
 
 .footer-padding {
@@ -127,3 +146,14 @@ td a {
     margin-top: 0vh;
     padding: 0 20vw;
 }
+
+@media screen and (max-width: 768px) {
+    .food-container {
+        margin: 0 1vh;
+    }
+
+    .food-image-left {
+        margin-bottom: 25px;
+    }
+}
+    
