@@ -54,7 +54,16 @@ I am starting to have second thoughts concerning my setup of having a detailed v
 
 ## Overview
 
+This project serves as a comprehensive booking and management platform for the Dome Restaurant. The platform allows customers to easily reserve tables, add special notes for their bookings, and specify the number of guests. On the other side, staff members can manage these bookings efficiently through a staff-only interface. The system ensures that only available tables are offered to the customers, considering variables like time, date, and capacity. The platform is designed to handle real-world scenarios with ease. The application was built using Python (Django), HTML, CSS, and JavaScript, with data being stored in a PostgreSQL database and images on a Cloudinary account.
+
+<br><br>
+The deployed project can be accessed at [this link](https://dome-restaurant-hero-9071346b8ec2.herokuapp.com/).
+<br><br>
+
 ## UX
+This site was created according to the Five Planes Of Website Design:<br>
+### Strategy<hr>
+
 
 ### Strategy
 

@@ -14,6 +14,8 @@ import datetime
 class HomeView(generic.TemplateView):
     template_name = 'index.html'
 
+class MenuView(generic.TemplateView):
+    template_name = 'menu.html'
 
 class IndexReservation(LoginRequiredMixin, ListView):
     template_name = 'view_reservations.html'

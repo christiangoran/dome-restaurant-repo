@@ -45,8 +45,13 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'reservation:home' %}"
-          ><img class="logo" src="https://res.cloudinary.com/dzw4z92rn/image/upload/v1692851813/logo_ab5isn.png" alt="Dome Logo"
+        <a
+          class="navbar-brand"
+          href="{% url 'reservation:home' %}"
+          ><img
+            class="logo"
+            src="https://res.cloudinary.com/dzw4z92rn/image/upload/v1692851813/logo_ab5isn.png"
+            alt="Dome Logo"
         /></a>
         <button
           class="navbar-toggler"
@@ -63,27 +68,27 @@
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a
-                class="nav-link active"
+                class="nav-link {% if navbar == 'home' %} active {% endif %}"
                 aria-current="page"
                 href="{% url 'reservation:home' %}"
                 >Home</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Menu</a>
+              <a class="nav-link  {% if navbar == 'menu' %} active {% endif %}" href="{% url 'reservation:menu' %}"> Menu</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'reservation:view' %}"
+              <a class="nav-link {% if navbar == 'home' %} reservation {% endif %}" href="{% url 'reservation:view' %}"
                 >Reservation</a
               >
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+              <a class="nav-link {% if navbar == 'account_logout' %} active {% endif %}" href="{% url 'account_logout' %}">Logout</a>
             </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+              <a class="nav-link {% if navbar == 'account_login' %} active {% endif %}" href="{% url 'account_login' %}">Login</a>
             </li>
             {% endif %}
           </ul>
@@ -123,12 +128,30 @@
 
     <!-- Footer -->
     <footer class="footer mt-auto py-3 dark-bg">
-      <p class="m-0 text-center">Made by Christian Göran</p>
-      <p class="m-0 text-center">
-        Follow us:
-        <i class="fab fa-facebook-square ms-3"></i>
-        <i class="fab fa-instagram-square ms-3"></i>
-      </p>
+      <div class="row">
+        <div class="col text-center">
+          <h6><strong>Opening Hours</strong></h6>
+          <p>
+            Mo - Fri: 09:00 - 22:00 <br />
+            Sat - Sun: 08:00 - 22:00
+          </p>
+        </div>
+        <div class="col text-center">
+          <h6><strong>Contact Us</strong></h6>
+          <p>
+            +46704 46 78 62 <br />
+            info@dome-lombok.com
+          </p>
+        </div>
+        <div class="col text-center">
+          <p class="m-0 text-center">Made by Christian Göran</p>
+          <p class="m-0 text-center">
+            Follow us:
+            <i class="fab fa-facebook-square ms-3"></i>
+            <i class="fab fa-instagram-square ms-3"></i>
+          </p>
+        </div>
+      </div>
     </footer>
 
     <script>
