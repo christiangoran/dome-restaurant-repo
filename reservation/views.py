@@ -5,6 +5,7 @@ from django.views import generic
 from .forms import ReservationForm, SearchReservationForm
 from .models import Reservation, Table
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView
 from django.views.generic.list import ListView
 from django.contrib import messages
 import datetime
@@ -14,12 +15,22 @@ import datetime
 class HomeView(generic.TemplateView):
     template_name = 'index.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context ['navbar'] = 'home'
+        return context
+
 class MenuView(generic.TemplateView):
     template_name = 'menu.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context ['navbar'] = 'menu'
+        return context
+
 class IndexReservation(LoginRequiredMixin, ListView):
     template_name = 'view_reservations.html'
-    login_url = '/accounts/login'  # If user is not logged in, redirect to /login/
+    login_url = '/login'  # If user is not logged in, redirect to /login
     context_object_name = 'reservations'
     model = Reservation
 
@@ -49,6 +60,7 @@ class IndexReservation(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)
         context['search_form'] = SearchReservationForm(self .request.GET or None)
+        context['navbar'] = 'view'
         return context
 
 
@@ -155,3 +167,15 @@ class DeleteReservation(generic.edit.DeleteView):
             f'Booking cancelled for {reservation.number_of_guests} guests on {reservation.date} at {reservation.get_time_display()}'
         )
         return super().delete(request, *args, **kwargs)
+    
+
+class CustomLoginView(LoginView):
+    """
+    This view is created to get active navbar link
+    """
+    template_name = 'login.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['navbar'] = 'login' # This is used to get active navbar link
+        return context

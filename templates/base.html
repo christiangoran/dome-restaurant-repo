@@ -78,7 +78,7 @@
               <a class="nav-link  {% if navbar == 'menu' %} active {% endif %}" href="{% url 'reservation:menu' %}"> Menu</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {% if navbar == 'home' %} reservation {% endif %}" href="{% url 'reservation:view' %}"
+              <a class="nav-link {% if navbar == 'view' %} active {% endif %}" href="{% url 'reservation:view' %}"
                 >Reservation</a
               >
             </li>
@@ -87,8 +87,8 @@
               <a class="nav-link {% if navbar == 'account_logout' %} active {% endif %}" href="{% url 'account_logout' %}">Logout</a>
             </li>
             {% else %}
-            <li class="nav-item">
-              <a class="nav-link {% if navbar == 'account_login' %} active {% endif %}" href="{% url 'account_login' %}">Login</a>
+            <li class="nav-item {% if request.path == '/login/' %}active{% endif %}">
+              <a class="nav-link" href="/login/">Login</a>
             </li>
             {% endif %}
           </ul>
@@ -128,7 +128,7 @@
 
     <!-- Footer -->
     <footer class="footer mt-auto py-3 dark-bg">
-      <div class="row">
+      <div class="row footer-padding">
         <div class="col text-center">
           <h6><strong>Opening Hours</strong></h6>
           <p>

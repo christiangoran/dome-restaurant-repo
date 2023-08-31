@@ -15,6 +15,10 @@ h3 {
     margin-top: -2rem;
 }
 
+h4 {
+    margin-bottom: 25px;
+}
+
 h5 { 
     font-size: 1.5rem;
     font-weight: 700;
@@ -30,6 +34,10 @@ p {
 
 li {
     font-size: 24px;
+}
+
+.active {
+    text-decoration: underline;
 }
 
 .btn-cancel {
@@ -105,7 +113,9 @@ td a {
 
 /* FOOTER */
 
-
+.footer-padding {
+    padding: 5vh 0;
+}
 
 /* MENU */
 
