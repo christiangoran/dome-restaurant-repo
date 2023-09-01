@@ -93,7 +93,7 @@ This site was created according to the Five Planes Of Website Design:<br>
 |**Menu**                               |  ||
 |                                       |5A| As a user, I want to see the restaurant's menu with details about ingredients and price, so that I can be completely aware of everything I want to order|
 |                                       |5B| As a staff member I can update menu items so that I have an easier time managing dish items|
-|**Bookings**      KLAR                     |  ||
+|**Bookings**                           |  ||
 |                                       |6A| As a logged in user I can se a list of my reservations so that I can have a better overview|
 |                                       |6B| As a logged-in staff member I can see upcoming reservations so that we can prepare the working day|
 |                                       |6C| As a logged-in staff member I can filter  reservations so that I can see reservations for a specific date|
@@ -111,24 +111,48 @@ This site was created according to the Five Planes Of Website Design:<br>
 |                                       |8A| As a developer I need to write automated tests  and testing documentation so that others and myself can better understand my project|
 |                                       |8B| As a developer I need to write readme.md so that others and myself can better understand my project|
 
+**Project Goal:**<br>
+The goal for the project is to create a website with good UX/UI in mind that is usefull to staff members and clients. The website should convey an emotional response in the user.
 
-### Strategy
+**Project Objectives:**<br>
+* To create a simple and intuitive website that with the help of UX conveys an positive emotional response in the user;
+* The design and content should help instill a better image of the client and their business;
+* To make to clear categories of login accounts for staff members and clients;
+* To implement features and design that upgrade the users experience;
+* To make a responsive website that works on every device.<br><br>
 
-### Scope
+### Scope<hr>
+**Simple and Intuitive UX**<br>
+* Create a website that follows the graphical profile and theme of the client;
+* Create a header and a footer;
+* Create a navbar that is visible throughout the website;
+* Ensure that all user changes are notified to the user visually;
+* Ensure that the user keeps their orientation during their navigation througout the website.
 
-<hr>
+**Relevant Content**<br>
+* Add relevant information about the restaurant, including its name, location, phone number and email;
+* Create a clear and attrative presentation of the restaurant menu;
+* Add photos that depict some of the food offered at the restaurant.
 
-### Structure
+**Features for Upgraded Experience**<br>
+* Create a reservation section that allows the users to see all the reservations  available for a specific date and time:
+* Create a Menu feature that displays all the menu information;
+* Create a Profile page for the user to see his upcoming bookings and favourite meals;
+* Create a staff-member account to manage all the bookings for all the users;
 
-<hr>
+**Clints % Staff Members Different Accounts**<br>
+* Allow access to Profile page only for client type of users;
+* Allow access to Manage Bookings page only for staff members type of users;
+* Create a filter function only visible for staff-members for them to find specific reservations.
 
-### Skeleton
+**Responsiveness**<br>
+* Create a responsive website that works on every device and screen size.<br><br>
 
-<hr>
+### Structure<hr>
 
-### Surface
+### Skeleton<hr>
 
-<hr>
+### Surface<hr>
 
 #### Color Scheme
 
