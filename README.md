@@ -164,19 +164,22 @@ The project flow chart was created using <b>LucidChart</b>.<br><br>
 
 ### Skeleton<hr>
 **Wireframes**<br>
-The wireframes for mobile and desktop were created with [Balsamiq](https://balsamiq.com/) tool and can be viewed [here](link goes here)<br>
+The wireframes for mobile and desktop were created with [Balsamiq](https://balsamiq.com/) tool and can be viewed <details>
+<summary>Here:</summary>
+<img src="static/images/restaurant_wireframe.png"><br>
+</details><br>
 
 **Database**<br>
 The project uses ElephantSQL as PostgreSQL relational database for storing the data.<br>
 Two diagrams were created to represent the relationships between the tables. The first diagram was created before the website was developed, and it was used to identify the most relevant and useful attributes and tables. The final diagram was created after the website was developed, and it reflects the changes that were made to the attributes and tables.
 
 <details>
-  <summary>Initial Schema</summary>
+  <summary>Initial Model</summary>
 <img src="static/images/datamodel_plan.png" ><br>
 </details>
 
 <details>
-  <summary>Final Schema</summary>
+  <summary>Final Model</summary>
 <img src="static/images/datamodel.png"><br>
 </details><br>
 
