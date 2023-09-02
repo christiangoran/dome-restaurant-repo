@@ -151,15 +151,15 @@ The goal for the project is to create a website with good UX/UI in mind that is 
 ### Structure<hr>
 The website is designed with a focus on user experience and is divided into 6 distinct pages, each serving a specific purpose. The content displayed on these pages varies based on whether the user is authenticated and whether they are a client or staff member. Here are the details:
 
-* Register/Login: These pages allow users to create an account or authenticate into an existing one, providing access to various exclusive features.
-* Logout: This is implemented as a modal dialog that allows users to securely log out of their accounts.
-* Home: Accessible to all users, this page showcases the restaurant's ambiance, popular dishes, opening & closing times and contact info.
-* Menu: This page displays the restaurant's menu items. An "Add to Favourite" feature is available only to logged-in clients.
-* Reservations/profile: Exclusive to authenticated users, this page enables both clients and staff members to make or manage bookings.
-* Staff Manage Bookings: Accessible only to staff members, this page displays all registered bookings, which can be grouped and filtered by date.
+* **Register/Login:** These pages allow users to create an account or authenticate into an existing one, providing access to various exclusive features.
+* **Logout:** This is implemented as a modal dialog that allows users to securely log out of their accounts.
+* **Home:** Accessible to all users, this page showcases the restaurant's ambiance, popular dishes, opening & closing times and contact info.
+* **Menu:** This page displays the restaurant's menu items. An "Add to Favourite" feature is available only to logged-in clients.
+* **Reservations/profile:** Exclusive to authenticated users, this page enables both clients and staff members to make or manage bookings.
+* **Staff Manage Bookings:** Accessible only to staff members, this page displays all registered bookings, which can be grouped and filtered by date.
 
-* FLOWCHARTS
-The project flow chart was created using <b>LucidChart</b>.<br><br>
+#### Flowchart
+The project flowchart was created using <b>LucidChart</b>.<br><br>
 [![N|Solid](static/images/flow_chart.png)](static/images/flow_chart.png)<br><br>
 
 ### Skeleton<hr>
@@ -218,10 +218,42 @@ Two diagrams were created to represent the relationships between the tables. The
 ## Deployment
 
 ### Deploy on Heroku
+ 1. Create Pipfile 
+ 
+ In the terminal enter the command ` pip3 freeze > requirements.txt`, and a file with all requirements will be created. 
+ 
+ 2. Setting up Heroku
 
-### FORK THE REPOSITORY
+    * Go to the Heroku website (https://www.heroku.com/) 
+    * Login to Heroku and choose *Create App* 
+    * Click *New* and *Create a new app*
+    * Choose a name and select your location
+    * Go to the *Resources* tab 
+    * From the Resources list select *Heroku Postgres*
+    * Navigate to the *Deploy* tab
+    * Click on *Connect to Github* and search for your repository
+    * Navigate to the *Settings* tab
+    * Reveal Config Vars and add your Cloudinary, Database URL (from Heroku-Postgres) and Secret key.    
 
-### CLONE THE REPOSITORY
+3. Deployment on Heroku
+
+    * Go to the Deploy tab.
+    * Choose the main branch for deploying and enable automatic deployment 
+    * Select manual deploy for building the App 
+    
+### Fork the repository
+For creating a copy of the repository on your account and change it without affecting the original project, use<b>Fork</b> directly from GitHub:
+- On [My Repository Page](https://github.com/christiangoran/dome-restaurant-repo), press <i>Fork</i> in the top right of the page
+- A forked version of my project will appear in your repository<br></br>
+
+### Clone the repository
+For creating a clone of the repository on your local machine, use<b>Clone</b>:
+- On [My Repository Page](https://github.com/christiangoran/dome-restaurant-repo), click the <i>Code</i> green button, right above the code window
+- Chose from <i>HTTPS, SSH and GitClub CLI</i> format and copy (preferably <i>HTTPS</i>)
+- In your <i>IDE</i> open <i>Git Bash</i>
+- Enter the command <code>git clone</code> followed by the copied URL
+- Your clone was created
+<hr>
 
 ## Credits
 
