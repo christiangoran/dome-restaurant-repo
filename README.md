@@ -1,6 +1,7 @@
 # Dome Restaurant 
 
-
+<img src="https://res.cloudinary.com/dzw4z92rn/image/upload/v1692852991/static/images/bg.c2eb0cc111ba.jpg" ><br>
+<hr>
 
 ## Notes during coding process
 
@@ -53,7 +54,6 @@ I am starting to have second thoughts concerning my setup of having a detailed v
   * [Acknowledgements](#acknowledgements)
 
 ## Overview
-
 This project serves as a comprehensive booking and management platform for the Dome Restaurant. The platform allows customers to easily reserve tables, add special notes for their bookings, and specify the number of guests. On the other side, staff members can manage these bookings efficiently through a staff-only interface. The system ensures that only available tables are offered to the customers, considering variables like time, date, and capacity. The platform is designed to handle real-world scenarios with ease. The application was built using Python (Django), HTML, CSS, and JavaScript, with data being stored in a PostgreSQL database and images on a Cloudinary account.
 
 <br><br>
@@ -149,8 +149,36 @@ The goal for the project is to create a website with good UX/UI in mind that is 
 * Create a responsive website that works on every device and screen size.<br><br>
 
 ### Structure<hr>
+The website is designed with a focus on user experience and is divided into 6 distinct pages, each serving a specific purpose. The content displayed on these pages varies based on whether the user is authenticated and whether they are a client or staff member. Here are the details:
+
+* Register/Login: These pages allow users to create an account or authenticate into an existing one, providing access to various exclusive features.
+* Logout: This is implemented as a modal dialog that allows users to securely log out of their accounts.
+* Home: Accessible to all users, this page showcases the restaurant's ambiance, popular dishes, opening & closing times and contact info.
+* Menu: This page displays the restaurant's menu items. An "Add to Favourite" feature is available only to logged-in clients.
+* Reservations/profile: Exclusive to authenticated users, this page enables both clients and staff members to make or manage bookings.
+* Staff Manage Bookings: Accessible only to staff members, this page displays all registered bookings, which can be grouped and filtered by date.
+
+* FLOWCHARTS
+The project flow chart was created using <b>LucidChart</b>.<br><br>
+[![N|Solid](static/images/flow_chart.png)](static/images/flow_chart.png)<br><br>
 
 ### Skeleton<hr>
+**Wireframes**<br>
+The wireframes for mobile and desktop were created with [Balsamiq](https://balsamiq.com/) tool and can be viewed [here](link goes here)<br>
+
+**Database**<br>
+The project uses ElephantSQL as PostgreSQL relational database for storing the data.<br>
+Two diagrams were created to represent the relationships between the tables. The first diagram was created before the website was developed, and it was used to identify the most relevant and useful attributes and tables. The final diagram was created after the website was developed, and it reflects the changes that were made to the attributes and tables.
+
+<details>
+  <summary>Initial Schema</summary>
+<img src="static/images/datamodel_plan.png" ><br>
+</details>
+
+<details>
+  <summary>Final Schema</summary>
+<img src="static/images/datamodel.png"><br>
+</details><br>
 
 ### Surface<hr>
 
