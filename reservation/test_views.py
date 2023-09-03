@@ -24,6 +24,7 @@ class BaseTest(TestCase):
         )
 
         self.table1 = Table.objects.create(table_number=1, capacity=4)
+        self.table2 = Table.objects.create(table_number=2, capacity=4)
 
         Reservation.objects.create(
             user=self.user,
@@ -87,3 +88,32 @@ class TestIndexReservationView(BaseTest):
         self.assertEqual(len(response.context['reservations']), 1)
         self.assertEqual(response.context['reservations'][0].customer_email, 'mcspank2003@hotmail.com')
           
+    def test_search_by_date(self):
+        self.client.login(username='Ms Doubtfire', password='HelloDear')
+        response = self.client.get('/view/', {'booking_date': datetime.date.today() + datetime.timedelta(days=1)})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['reservations']), 1)
+        self.assertEqual(response.context['reservations'][0].date, datetime.date.today() + datetime.timedelta(days=1))
+
+
+class TestCreateReservationView(BaseTest):
+
+    def test_create_reservation_view(self):
+        self.client.login(username='Mr McSchmoff', password='BuzzLightyearIsSexxi')
+        response = self.client.get('/create/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'create_reservation.html')
+
+    def test_create_reservation(self):
+        self.client.login(username='Mr McSchmoff', password='BuzzLightyearIsSexxi')
+        response = self.client.post('/create/', {
+            'table': self.table2,
+            'name': 'Tree Hugger',
+            'date': datetime.date.today() + datetime.timedelta(days=1),
+            'time': 1,
+            'number_of_guests': 2,
+            'customer_email': ''
+        })
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(Reservation.objects.count(), 2)
+
