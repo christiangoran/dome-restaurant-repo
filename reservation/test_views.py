@@ -117,3 +117,39 @@ class TestCreateReservationView(BaseTest):
         self.assertEqual(response.status_code, 302)
         self.assertEqual(Reservation.objects.count(), 2)
 
+class TestUpdateReservationView(BaseTest):
+
+    def test_update_reservation_view(self):
+        self.client.login(username='Mr McSchmoff', password='BuzzLightyearIsSexxi')
+        response = self.client.get('/update/1/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'update_reservation.html')
+    
+    def test_update_reservation(self):
+        self.client.login(username='Mr McSchmoff', password='BuzzLightyearIsSexxi')
+        response = self.client.post('/update/1/', {
+            'table': self.table1,
+            'name': 'Spanky McSpankerson',
+            'date': datetime.date.today() + datetime.timedelta(days=1),
+            'time': 2, # Update time from 1 to 2
+            'number_of_guests': 4, # Update number_of_guests from 2 to 4
+            'customer_email': ''
+        })
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(Reservation.objects.get(id=1).time, 2)
+        self.assertEqual(Reservation.objects.get(id=1).number_of_guests, 4)
+
+
+class TestDeleteReservationView(BaseTest):
+
+    def test_delete_reservation_view(self):
+        self.client.login(username='Mr McSchmoff', password='BuzzLightyearIsSexxi')
+        response = self.client.get('/delete/1/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'delete_reservation.html')
+
+    def test_delete_reservation(self):
+        self.client.login(username='Mr McSchmoff', password='BuzzLightyearIsSexxi')
+        response = self.client.post('/delete/1/')
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(Reservation.objects.count(), 0)        
