@@ -74,6 +74,10 @@ class TestIndexReservationView(BaseTest):
         response = self.client.get('/view/')
         self.assertEqual(response.status_code, 200)
 
+    def test_if_user_is_not_staff_return_only_their_reservations(self):
+        self.client.login(username='Mr McSchmoff', password='BuzzLightyearIsSexxi')
+        response = self.client.get('/view/')
+        self.assertEqual(response.status_code, 200)
 
     
           
