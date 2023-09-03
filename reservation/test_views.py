@@ -32,6 +32,7 @@ class BaseTest(TestCase):
             date=datetime.date.today() + datetime.timedelta(days=1),
             time=1,
             number_of_guests=2,
+            customer_email='mcspank2003@hotmail.com'
         )
 
 
@@ -79,5 +80,10 @@ class TestIndexReservationView(BaseTest):
         response = self.client.get('/view/')
         self.assertEqual(response.status_code, 200)
 
-    
+    def test_search_by_email(self):
+        self.client.login(username='Ms Doubtfire', password='HelloDear')
+        response = self.client.get('/view/', {'booking_email': 'mcspank2003@hotmail.com'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(response.context['reservations']), 1)
+        self.assertEqual(response.context['reservations'][0].customer_email, 'mcspank2003@hotmail.com')
           
