@@ -5,6 +5,12 @@ from .forms import ReservationForm
 import datetime
 
 
+"""
+In this test file I will divide the tests into different methods
+under one main class for learning purposes.
+"""
+
+
 class ReservationFormTestCase(TestCase):
     """
     All of these tests are made to test the ReservationForm (Hello Captain Obvious)
