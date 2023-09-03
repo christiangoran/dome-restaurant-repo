@@ -6,7 +6,11 @@ import datetime
 
 
 class ReservationFormTestCase(TestCase):
-
+    """
+    All of these tests are made to test the ReservationForm (Hello Captain Obvious)
+    #1 I setup a user
+    #2 I setup a number of tables for the restaurant that can be used in the test
+    """
 
     def setUp(self):
         # Create a user
@@ -22,6 +26,7 @@ class ReservationFormTestCase(TestCase):
 
     
     def test_valid_data(self):
+        # Create a normal reservation to see if it is valid
         form = ReservationForm({
             'name': 'Testy McTesterson',
             'customer_email': 'testy.mctesterson@cool.com',
@@ -34,6 +39,7 @@ class ReservationFormTestCase(TestCase):
 
 
     def test_past_date(self):
+
         form = ReservationForm({
             'name': 'Testy McTesterson',
             'customer_email': 'testy.mctesterson@cool.com',
@@ -47,6 +53,7 @@ class ReservationFormTestCase(TestCase):
 
 
     def test_invalid_number_of_guests(self):
+        # Create a reservation with too many guests for any table
         form = ReservationForm({
             'name': 'Testy McTesterson',
             'customer_email': 'testy.mctesterson@cool.com',
@@ -60,6 +67,7 @@ class ReservationFormTestCase(TestCase):
 
 
     def test_all_tables_reserved(self):
+        # Test to see if we get the right error message when all tables are reserved
 
         # Creating 5 reservations first so that all tables are reserved
         Reservation.objects.create(
@@ -125,5 +133,6 @@ class ReservationFormTestCase(TestCase):
 
 
     def test_fields_are_explicit_in_form_metaclass(self):
+        # Test to see if the fields are explicitly defined in the form metaclass
         form = ReservationForm()
         self.assertEqual(form.Meta.fields, ['name', 'customer_email', 'date', 'time', 'notes', 'number_of_guests'])
