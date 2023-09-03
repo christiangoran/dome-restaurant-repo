@@ -40,6 +40,14 @@ li {
     text-decoration: underline;
 }
 
+.navbar {
+    background-color: #f6dcd8;
+}
+
+footer {
+    background-color: #f6dcd8;
+}
+
 .btn-cancel {
     margin: 10px;
 }
@@ -61,9 +69,9 @@ a {
     color: white;
     z-index: 1;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: 2rem;
-    border-radius: 20px;
+    background-color: #1f2f22;
+    padding: 2rem 5rem;
+    border-radius: 10px;
 }
 
 .carousel-item {
@@ -128,6 +136,16 @@ td a {
     width: 100%;
     margin-top: 25px;
     object-fit: contain;
+}
+
+.green {
+    background-color: #3f563e;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.white {
+    color: white;
 }
 
 /* FOOTER */

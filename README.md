@@ -28,8 +28,7 @@ I am starting to have second thoughts concerning my setup of having a detailed v
     + [Structure](#structure-hr-)
     + [Skeleton](#skeleton-hr-)
     + [Surface](#surface-hr-)
-      - [Color Scheme](#color-scheme)
-      - [Fonts](#fonts)
+      - [Color Scheme & Fonts](#color-scheme-and-fonts)
       - [Visual Effects](#visual-effects)
   * [Agile Methodology](#agile-methodology)
   * [Features](#features)
@@ -184,14 +183,74 @@ Two diagrams were created to represent the relationships between the tables. The
 </details><br>
 
 ### Surface<hr>
+#### Color Scheme and Fonts
+* The fonts I used for this site were imported from [Google Fonts](https://fonts.google.com/):<br>
+* h1 - h6 elements: *Lato*
+* paragraphs, links: *Baskerville*
 
-#### Color Scheme
-
-#### Fonts
+<img src="static/images/font_color.png" width="60%"><br>
 
 #### Visual Effects
 
 ## Agile Methodology
+This project was developed using the Agile methodology.<br>
+All epics and user stories implementation progress was registered using [GitHub](https://github.com/). As the user stories were accomplished, they were moved in the GitHub Kanban board from **ToDo**, to **In Progress**, **Done** and **Not Implemented** lists. 
+<details>
+<summary>Sprint Details</summary>
+
+* **KANBAN BOARD**<br><br>
+    <img src="static/images/kanban.png" width="60%"><br><br>
+* **EPIC 1 - BASE SETUP**<br>
+    -1A Create base.html<br>
+    -1B Create static resources<br>
+    -1C Create navigation menu<br>
+    -1D Design according to good UX practices<br>
+    -1E Setup Django project<br>
+    -1F Create a footer<br><br>
+    <img src="static/images/epic-1.png" width="60%"><br><br>
+* **EPIC 2 - STAND ALONE PAGES**<br>
+    -2A Implement 404 page<br>
+    -2B Implement 505 page<br>
+    -2C Implement 403 page<br>
+    -2D Create a restaurant page<br><br>
+    <img src="static/images/epic-2.png" width="60%"><br><br>
+* **EPIC 3 - AUTENTHICATION**<br>
+    -3A Implement the *Register* page using the django-allauth module<br>
+    -3B Implement the *Login* page using django-allauth module<br>
+    -3C Implement *Logout* modal using django-allauth module<br>
+    -3D Implement a *Reset password* function<br><br>
+    <img src="static/images/epic-3.png" width="60%"><br><br>
+* **Sprint 4 - CONTACT**<br>
+    -4A Implement opening & closing times on the webpage<br>
+    -4B Implement information about location of the restaurant<br>
+    -4C Implement contact information<br>
+    -4D Implement other relevant information<br><br>
+    <img src="static/images/epic-4.png" width="60%"><br><br>
+* **Sprint 5 - MENU**<br>
+    -5A Create a menu page with menu items<br>
+    -5B Implement a function so that staff can enter new items on the menu<br><br>
+    <img src="static/images/epic-5.png" width="60%"><br><br>
+* **Sprint 6 - BOOKINGS**<br>
+    -6A Implement reservation view for site user<br>
+    -6B Implement reservation view for staff<br>
+    -6C Implement reservation filter function for staff<br>
+    -6D Implement function so site user can update a reservation<br>
+    -6E Implement function so staff can update reservation<br>
+    -6F Implement so user can delete a reservation<br>
+    -6G Implement so staff can delete reservations<br>
+    -6H Implement function so that user can create a reservation<br>
+    -6I Implement so that site user can see available tables<br>
+    -6J Implement so that user receives a confirmation email after creating a reservation<br><br>
+    <img src="static/images/epic-6.png" width="60%"><br><br>
+* **Sprint 7 - DEPLOYMENT**<br>
+    -7A Prepare the project for deployment<br>
+    -7B Deploy the project to Heroku<br><br>
+    <img src="static/images/epic-7.png" width="60%"><br><br>
+* **Sprint 8 - DOCUMENTATION**<br>
+    -8A Create automated tests<br>
+    -8B Write documentation for project in README.md<br><br>
+    <img src="static/images/epic-8.png" width="60%"><br><br>
+</details><br><br>
 
 ## Features
 
@@ -213,7 +272,17 @@ Two diagrams were created to represent the relationships between the tables. The
 
 ### Python packages
 
+* Django (Framework)
+* django-allauth (Library)
+* django-bootstrap-datepicker-plus (Library)
+* django-crispy-forms (Library)
+* cloudinary (Library)
+* gunicorn (Web Server)
+* psycopg2 (Library)
+
+
 ## Testing
+The testing documentation can be found at [TESTING.MD](TESTING.MD)
 
 ## Deployment
 
