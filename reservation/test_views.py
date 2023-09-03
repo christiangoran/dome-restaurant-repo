@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from .models import Table, Reservation
 import datetime
+from django.urls import reverse
 
 
 """
@@ -142,14 +143,29 @@ class TestUpdateReservationView(BaseTest):
 
 class TestDeleteReservationView(BaseTest):
 
+    def setUp(self):
+        super().setUp()
+        self.reservation = Reservation.objects.create(
+            user=self.user,
+            table=self.table1,
+            name='Delete Me',
+            date=datetime.date.today() + datetime.timedelta(days=3),
+            time=2,
+            number_of_guests=3,
+        )
+        self.delete_url = reverse('reservation:delete', args=[self.reservation.id])
+
     def test_delete_reservation_view(self):
         self.client.login(username='Mr McSchmoff', password='BuzzLightyearIsSexxi')
-        response = self.client.get('/delete/1/')
+        response = self.client.get(self.delete_url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'delete_reservation.html')
 
-    def test_delete_reservation(self):
+    def test_authorized_user_delete_reservation(self):
         self.client.login(username='Mr McSchmoff', password='BuzzLightyearIsSexxi')
-        response = self.client.post('/delete/1/')
+        response = self.client.post(self.delete_url)
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(Reservation.objects.count(), 0)        
+        self.assertRedirects(response, reverse('reservation:view'), fetch_redirect_response=False)
+        # Verify the reservation was actually deleted
+        with self.assertRaises(Reservation.DoesNotExist):
+            Reservation.objects.get(id=self.reservation.id)
