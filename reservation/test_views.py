@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
 from .models import Table, Reservation
+import datetime
 
 
 """
@@ -8,28 +9,31 @@ In this test file I will divide the tests into different classes
 instead of having all tests in one class for learning purposes
 """
 
-def setUp(self):
-    self.user = User.objects.create_user(
-        username='Mr McSchmoff',
-        password='BuzzLightyearIsSexxi'
-    )
+class BaseTest(TestCase):
 
-    self.staff_user = User.objects.create_user(
-        username='Ms Doubtfire',
-        password='HelloDear',
-        is_staff=True
-    )
+    def setUp(self):
+        self.user = User.objects.create_user(
+            username='Mr McSchmoff',
+            password='BuzzLightyearIsSexxi'
+        )
 
-    self.table1 = Table.objects.create(table_number=1, capacity=4)
+        self.staff_user = User.objects.create_user(
+            username='Ms Doubtfire',
+            password='HelloDear',
+            is_staff=True
+        )
 
-    Reservation.objects.create(
-        user=self.user,
-        table=self.table1,
-        name='Spanky McSpankerson',
-        date=datetime.date.today() + datetime.timedelta(days=1),
-        time=1,
-        number_of_guests=2,
-    )
+        self.table1 = Table.objects.create(table_number=1, capacity=4)
+
+        Reservation.objects.create(
+            user=self.user,
+            table=self.table1,
+            name='Spanky McSpankerson',
+            date=datetime.date.today() + datetime.timedelta(days=1),
+            time=1,
+            number_of_guests=2,
+        )
+
 
 class TestHomeView(TestCase):
 
@@ -49,7 +53,7 @@ class TestMenuView(TestCase):
         self.assertContains(response, 'Menu')
 
 
-class TestIndexReservationView(TestCase):
+class TestIndexReservationView(BaseTest):
 
     def test_index_reservation_view(self):
         response = self.client.get('/view/')
@@ -60,8 +64,16 @@ class TestIndexReservationView(TestCase):
         # Django's LoginRequiredMixin seem to appends a ?next= parameter to the URL to 
         # keep track of where to send the user back after they have logged in. 
         # This is why you see the ?next=%2Fview%2F part here below
+        
         # I also removed the response context from the test since
         # I kept getting a 301 instead of an expected 200
-        self.assertRedirects(response, '/login?next=%2Fview%2F', fetch_redirect_response=False)
+        self.assertRedirects(response, '/login?next=%2Fview%2F',fetch_redirect_response=False)
 
+    def test_if_user_is_staff_return_all_reservations(self):
+        self.client.login(username='Ms Doubtfire', password='HelloDear')
+        response = self.client.get('/view/')
+        self.assertEqual(response.status_code, 200)
+
+
+    
           
