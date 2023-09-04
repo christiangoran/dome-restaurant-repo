@@ -1,4 +1,4 @@
-# Restaurant Reservation System Testing Documentation
+# Dome Restaurant Website Testing Documentation
 
 ## Summary
 

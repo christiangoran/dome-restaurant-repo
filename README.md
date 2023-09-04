@@ -284,7 +284,7 @@ All epics and user stories implementation progress was registered using [GitHub]
 
 
 ## Testing
-The testing documentation can be found at [TESTING.MD](TESTING.MD)
+The testing documentation can be found at [TESTING.md](TESTING.md)
 
 ## Deployment
 
