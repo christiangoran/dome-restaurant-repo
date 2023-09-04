@@ -148,6 +148,12 @@ td a {
     color: white;
 }
 
+/* INFORMATION */
+
+.info-img {
+    padding: 5vh 0 15vh 0;
+}
+
 /* FOOTER */
 
 .footer-padding {

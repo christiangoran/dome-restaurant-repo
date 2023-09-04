@@ -27,6 +27,14 @@ class MenuView(generic.TemplateView):
         context = super().get_context_data(**kwargs)
         context ['navbar'] = 'menu'
         return context
+    
+class InformationView(generic.TemplateView):
+    template_name = 'information.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context ['navbar'] = 'information'
+        return context    
 
 class IndexReservation(LoginRequiredMixin, ListView):
     template_name = 'view_reservations.html'
