@@ -38,7 +38,7 @@ class InformationView(generic.TemplateView):
 
 class IndexReservation(LoginRequiredMixin, ListView):
     template_name = 'view_reservations.html'
-    login_url = '/login'  # If user is not logged in, redirect to /login
+    login_url = '/accounts/login'  # If user is not logged in, redirect to /login
     context_object_name = 'reservations'
     model = Reservation
 
@@ -187,3 +187,10 @@ class CustomLoginView(LoginView):
         context = super().get_context_data(**kwargs)
         context['navbar'] = 'login' # This is used to get active navbar link
         return context
+  
+  
+def SignupView(request):
+    context = {
+        'signup_url': reverse('reservation:signup')
+    }
+    return render(request, 'account/signup.html', context)

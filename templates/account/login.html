@@ -16,9 +16,9 @@
       <h2>{% trans "Sign In" %}</h2>
 
       <p>
-        {% blocktrans %} Welcome back to Dome Restaurant. 
+       Welcome back to Dome Restaurant. 
         If you would like to make a reservation please login. If you have not created an account yet, then
-        <a href="{{ signup_url }}" style="color: blue;">sign up</a> first.{% endblocktrans %}
+        <a href="{{ signup_url }}" style="color: blue;">sign up</a> first.
       </p>
 
       <form class="login" method="POST" action="{% url 'account_login' %}">

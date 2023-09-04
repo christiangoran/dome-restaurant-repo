@@ -1,11 +1,9 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends "base.html" %} {% load static %} {% block content %}
 
-{% block content %}
 <div class="d-flex flex-column align-items-center">
-    <h1>403 Forbidden</h1>
-    <p>You are not authorised to perform this action!</p>
+  <h1>403 Forbidden</h1>
+  <p>You are not authorised to perform this action!</p>
 
-    <a href="{% url 'home' %}" class="btn button-style">Home</a>
+  <a href="{% url 'home' %}" class="btn button-style">Home</a>
 </div>
 {% endblock %}

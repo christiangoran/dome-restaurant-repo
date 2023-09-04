@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="signup-container">
     <div class="row">
         <div class="col-10 col-sm-4 mx-auto">
             <h2>{% trans "Sign Up" %}</h2>
@@ -18,9 +18,7 @@
 
 
             <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-                {% csrf_token %}
-                {{ form|crispy }}
-                {% if redirect_field_value %}
+                {% csrf_token %}  {{ form|crispy }} {% if redirect_field_value %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
                 <button class="btn btn-success right" type="submit">{% trans "Sign Up" %} &raquo;</button>

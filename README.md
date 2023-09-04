@@ -19,6 +19,8 @@ I am starting to have second thoughts concerning my setup of having a detailed v
 
 - Problems with making reservations: There seem to be a problem with updating reservations. Even though I only have one reservation during a specific date and plenty of tables available, I can't seem to update the reservation to another time during the same date. I get "Sorry we do not have a table with that capacity available".
 
+- After making my 403, 404 and 500 pages, I can't seem to be able to access them. It only say "A server error occurred.  Please contact the administrator."
+
 
 ## Table of contents
   * [Overview](#overview)
