@@ -11,30 +11,32 @@ from django.contrib import messages
 import datetime
 
 
-
 class HomeView(generic.TemplateView):
     template_name = 'index.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context ['navbar'] = 'home'
+        context['navbar'] = 'home'
         return context
+
 
 class MenuView(generic.TemplateView):
     template_name = 'menu.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context ['navbar'] = 'menu'
+        context['navbar'] = 'menu'
         return context
-    
+
+
 class InformationView(generic.TemplateView):
     template_name = 'information.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context ['navbar'] = 'information'
-        return context    
+        context['navbar'] = 'information'
+        return context
+
 
 class IndexReservation(LoginRequiredMixin, ListView):
     template_name = 'view_reservations.html'
@@ -54,30 +56,29 @@ class IndexReservation(LoginRequiredMixin, ListView):
             if booking_date:
                 queryset = queryset.filter(date=booking_date)
 
-            queryset = queryset.filter(date__gte=datetime.date.today()-datetime.timedelta(days=1))    
+            queryset = queryset.filter(
+                date__gte=datetime.date.today()-datetime.timedelta(days=1))
 
-                # If user is staff, return all reservations from today onwards
+            # If user is staff, return all reservations from today onwards
             return queryset
-            
+
         else:
             # If user is not staff, return only reservations made by user
             return Reservation.objects.filter(user=self.request.user)
-        
-
 
     def get_context_data(self, **kwargs):
-        context =  super().get_context_data(**kwargs)
-        context['search_form'] = SearchReservationForm(self .request.GET or None)
+        context = super().get_context_data(**kwargs)
+        context['search_form'] = SearchReservationForm(
+            self .request.GET or None)
         context['navbar'] = 'view'
         return context
-
 
 
 class CreateReservation(generic.edit.CreateView):
     template_name = 'create_reservation.html'
     model = Reservation
     form_class = ReservationForm
-    success_url = reverse_lazy('reservation:view') 
+    success_url = reverse_lazy('reservation:view')
 
     def form_valid(self, form):
         """
@@ -133,8 +134,7 @@ class UpdateReservation(generic.edit.UpdateView):
             return reservation
         else:
             raise Http404("You are not authorized to edit this reservation.")
-        
-        
+
     def form_valid(self, form):
         """
         After the form is submitted, this wills end a success message with info
@@ -143,7 +143,6 @@ class UpdateReservation(generic.edit.UpdateView):
         time = form.cleaned_data['time']
         guests = form.cleaned_data['number_of_guests']
 
-        
         messages.success(
             self.request,
             f'Booking updated for {guests} guests on {date} at {form.instance.get_time_display()}'
@@ -175,7 +174,7 @@ class DeleteReservation(generic.edit.DeleteView):
             f'Booking cancelled for {reservation.number_of_guests} guests on {reservation.date} at {reservation.get_time_display()}'
         )
         return super().delete(request, *args, **kwargs)
-    
+
 
 class CustomLoginView(LoginView):
     """
@@ -185,10 +184,10 @@ class CustomLoginView(LoginView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['navbar'] = 'login' # This is used to get active navbar link
+        context['navbar'] = 'login'  # This is used to get active navbar link
         return context
-  
-  
+
+
 def SignupView(request):
     context = {
         'signup_url': reverse('reservation:signup')

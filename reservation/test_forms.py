@@ -20,7 +20,8 @@ class ReservationFormTestCase(TestCase):
 
     def setUp(self):
         # Create a user
-        self.user = User.objects.create(username='TestyMcTesterson', password='IamCool123')
+        self.user = User.objects.create(
+            username='TestyMcTesterson', password='IamCool123')
 
         # Create some Table instances
         # And we need to create 5 to match validation error code in forms.py
@@ -30,7 +31,6 @@ class ReservationFormTestCase(TestCase):
         self.table4 = Table.objects.create(table_number=4, capacity=2)
         self.table5 = Table.objects.create(table_number=5, capacity=2)
 
-    
     def test_valid_data(self):
         # Create a normal reservation to see if it is valid
         form = ReservationForm({
@@ -43,7 +43,6 @@ class ReservationFormTestCase(TestCase):
         })
         self.assertTrue(form.is_valid())
 
-
     def test_past_date(self):
 
         form = ReservationForm({
@@ -55,8 +54,8 @@ class ReservationFormTestCase(TestCase):
             'number_of_guests': 2,
         })
         self.assertFalse(form.is_valid())
-        self.assertEqual(form.errors, {'__all__': ['Sorry you have to book a future date']})
-
+        self.assertEqual(
+            form.errors, {'__all__': ['Sorry you have to book a future date']})
 
     def test_invalid_number_of_guests(self):
         # Create a reservation with too many guests for any table
@@ -69,8 +68,8 @@ class ReservationFormTestCase(TestCase):
             'number_of_guests': 20,
         })
         self.assertFalse(form.is_valid())
-        self.assertEqual(form.errors, {'__all__': ['Sorry we do not have a table with that capacity available']})
-
+        self.assertEqual(form.errors, {'__all__': [
+                         'Sorry we do not have a table with that capacity available']})
 
     def test_all_tables_reserved(self):
         # Test to see if we get the right error message when all tables are reserved
@@ -129,16 +128,16 @@ class ReservationFormTestCase(TestCase):
             'time': 1,  # same as "12:00pm - 1:45pm" on website
             'notes': 'This is a test',
             'number_of_guests': 2,
-        })   
+        })
 
         self.assertFalse(form.is_valid())  # The form should be invalid
 
         expected_error = 'Sorry we do not have a table available for that date and time'
-        actual_error = str(form.errors['__all__'][0]) 
+        actual_error = str(form.errors['__all__'][0])
         self.assertEqual(expected_error, actual_error)
-
 
     def test_fields_are_explicit_in_form_metaclass(self):
         # Test to see if the fields are explicitly defined in the form metaclass
         form = ReservationForm()
-        self.assertEqual(form.Meta.fields, ['name', 'customer_email', 'date', 'time', 'notes', 'number_of_guests'])
+        self.assertEqual(form.Meta.fields, [
+                         'name', 'customer_email', 'date', 'time', 'notes', 'number_of_guests'])

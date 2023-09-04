@@ -21,6 +21,8 @@ I am starting to have second thoughts concerning my setup of having a detailed v
 
 - After making my 403, 404 and 500 pages, I can't seem to be able to access them. It only say "A server error occurred.  Please contact the administrator."
 
+  - The misstake was that on every error page, there is  "home"-link. And the href for this link was "{% url 'home' %} when it should be "{% url 'reservation:home' %} so after analysing the server log I finally realised what was going on.
+
 
 ## Table of contents
   * [Overview](#overview)
