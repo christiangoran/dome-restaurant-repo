@@ -3,27 +3,6 @@
 <img src="https://res.cloudinary.com/dzw4z92rn/image/upload/v1692852991/static/images/bg.c2eb0cc111ba.jpg" ><br>
 <hr>
 
-## Notes during coding process
-
-I am starting to have second thoughts concerning my setup of having a detailed view for each specific booking. I am now thinking that maybe I should have a layout that gives all the information about each booking directly to the user, and by doing so removing an additional step the user need to take in order to get information.
-
-### List of libraries
-
-- Django-allauth 
-
-### List of bugs
-
-- Problems with search function: Either I got all reservations and the search didn't work, or I didn't get any reservations at all, or non-admin users could see all reservations, and so on.
-
-    - Restructuring the get_queryset method in the IndexReservation class in views.py a number of times until I got the logic to work did the trick.
-
-- Problems with making reservations: There seem to be a problem with updating reservations. Even though I only have one reservation during a specific date and plenty of tables available, I can't seem to update the reservation to another time during the same date. I get "Sorry we do not have a table with that capacity available".
-
-- After making my 403, 404 and 500 pages, I can't seem to be able to access them. It only say "A server error occurred.  Please contact the administrator."
-
-  - The misstake was that on every error page, there is  "home"-link. And the href for this link was "{% url 'home' %} when it should be "{% url 'reservation:home' %} so after analysing the server log I finally realised what was going on.
-
-
 ## Table of contents
   * [Overview](#overview)
   * [UX](#ux)

@@ -2,23 +2,34 @@
 
 ## Summary
 
-This document outlines the testing procedures and acceptance criteria for the Restaurant Reservation System project. It includes manual testing steps, expected outcomes, and references to automated tests where applicable.
+This document outlines a testing procedures following the EPICS that was used during the development of the project as well as acceptance criteria for the Dome website. It includes manual testing steps, expected outcomes, and references to automated tests where applicable.
 
 ## Table of Contents
-1. [Base Setup](#base-setup)
-2. [Stand Alone Pages](#stand-alone-pages)
-3. [Authentication](#authentication)
-4. [Contact](#contact)
-5. [Menu](#menu)
-6. [Bookings](#bookings)
-7. [Deployment](#deployment)
-8. [Documentation](#documentation)
+* [Testing](#testing)
+  + [1. Base Setup](#base-setup)
+  + [2. Stand Alone Pages](#stand-alone-pages)
+  + [3. Authentication](#authentication)
+  + [4. Contact](#contact)
+  + [5. Menu](#menu)
+  + [6. Bookings](#bookings)
+  + [7. Deployment](#deployment)
+  + [8. Documentation](#documentation)    
+* [Browser Testing](#browser-testing)
+* [Code Validation](#code-validation)
+  + [HTML](#html)
+  + [CSS](#css)
+  + [JavaScript](#javascript)
+  + [Python](#python)
+  + [Accesibility](#accesibility)
+  + [Performance](#performance)
+* [Bugs](#bugs)
 
 ---
 
-## 1. Base Setup <a name="base-setup"></a>
+## Testing
+### 1. Base Setup <a name="base-setup"></a>
 
-### User Story 1A: Create base.html Page
+#### User Story 1A: Create base.html Page
 
 **Manual Steps:**
 
@@ -39,7 +50,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 1B: Create Static Resources
+#### User Story 1B: Create Static Resources
 
 **Manual Steps:**
 
@@ -60,7 +71,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 1C: Navigation Menu
+#### User Story 1C: Navigation Menu
 
 **Manual Steps:**
 
@@ -79,9 +90,9 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 - Pass
 
-## 2. Stand Alone Pages <a name="stand-alone-pages"></a>
+### 2. Stand Alone Pages <a name="stand-alone-pages"></a>
 
-### User Story 2A: Implement 404 Error Page
+#### User Story 2A: Implement 404 Error Page
 
 **Manual Steps:**
 
@@ -102,7 +113,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 2B: Implement 500 Error Page
+#### User Story 2B: Implement 500 Error Page
 
 **Manual Steps:**
 
@@ -123,7 +134,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 2C: Implement 403 Error Page
+#### User Story 2C: Implement 403 Error Page
 
 **Manual Steps:**
 
@@ -144,7 +155,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 2D: Implement Home Page
+#### User Story 2D: Implement Home Page
 
 **Manual Steps:**
 
@@ -163,9 +174,9 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 - Pass
 
-## 3. Authentication <a name="authentication"></a>
+### 3. Authentication <a name="authentication"></a>
 
-### User Story 3A: User Account Creation
+#### User Story 3A: User Account Creation
 
 **Manual Steps:**
 
@@ -186,7 +197,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 3B: User Login
+#### User Story 3B: User Login
 
 **Manual Steps:**
 
@@ -207,7 +218,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 3C: User Logout
+#### User Story 3C: User Logout
 
 **Manual Steps:**
 
@@ -228,7 +239,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 3D: Password Reset
+#### User Story 3D: Password Reset
 
 **Manual Steps:**
 
@@ -247,9 +258,9 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 - FAIL (Function not implemented at this stage)
 
-## 4. Contact <a name="contact"></a>
+### 4. Contact <a name="contact"></a>
 
-### User Story 4A: View Opening and Closing Hours
+#### User Story 4A: View Opening and Closing Hours
 
 **Manual Steps:**
 
@@ -270,7 +281,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 4B: View Location Information
+#### User Story 4B: View Location Information
 
 **Manual Steps:**
 
@@ -291,7 +302,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 4C: View Contact Information
+#### User Story 4C: View Contact Information
 
 **Manual Steps:**
 
@@ -312,7 +323,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 4D: View Relevant Information
+#### User Story 4D: View Relevant Information
 
 **Manual Steps:**
 
@@ -333,9 +344,9 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 
 
-## 5. Menu <a name="menu"></a>
+### 5. Menu <a name="menu"></a>
 
-### User Story 5A: View Restaurant's Menu
+#### User Story 5A: View Restaurant's Menu
 
 **Manual Steps:**
 
@@ -356,7 +367,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 --
 
-### User Story 5B: Update Menu Items
+#### User Story 5B: Update Menu Items
 
 **Manual Steps:**
 
@@ -378,9 +389,9 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-## 6. Bookings <a name="bookings"></a>
+### 6. Bookings <a name="bookings"></a>
 
-### User Story 6A: View List of Reservations
+#### User Story 6A: View List of Reservations
 
 **Manual Steps:**
 
@@ -402,7 +413,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 6B: Staff View of Upcoming Reservations
+#### User Story 6B: Staff View of Upcoming Reservations
 
 **Manual Steps:**
 
@@ -423,7 +434,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 6C: Filter Reservations by Date
+#### User Story 6C: Filter Reservations by Date
 
 **Manual Steps:**
 
@@ -444,7 +455,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 6D: Update a Selected Reservation
+#### User Story 6D: Update a Selected Reservation
 
 **Manual Steps:**
 
@@ -467,7 +478,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 6E: Staff Updates Reservation
+#### User Story 6E: Staff Updates Reservation
 
 **Manual Steps:**
 
@@ -489,7 +500,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 6F: Delete a Reservation
+#### User Story 6F: Delete a Reservation
 
 **Manual Steps:**
 
@@ -512,7 +523,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 6G: Staff Cancels Booking
+#### User Story 6G: Staff Cancels Booking
 
 **Manual Steps:**
 
@@ -534,7 +545,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 6H: Select Time and Date for Reservation
+#### User Story 6H: Select Time and Date for Reservation
 
 **Manual Steps:**
 
@@ -556,7 +567,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 6I: View Available Tables
+#### User Story 6I: View Available Tables
 
 **Manual Steps:**
 
@@ -578,7 +589,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 6J: Email Confirmation for Reservation
+#### User Story 6J: Email Confirmation for Reservation
 
 **Manual Steps:**
 
@@ -600,7 +611,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 7A: Remove Debug and Comments for Deployment
+#### User Story 7A: Remove Debug and Comments for Deployment
 
 **Manual Steps:**
 
@@ -623,7 +634,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 7B: Deploy to Heroku
+#### User Story 7B: Deploy to Heroku
 
 **Manual Steps:**
 
@@ -645,7 +656,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 8A: Write Automated Tests and Testing Documentation
+#### User Story 8A: Write Automated Tests and Testing Documentation
 
 **Manual Steps:**
 
@@ -666,7 +677,7 @@ This document outlines the testing procedures and acceptance criteria for the Re
 
 ---
 
-### User Story 8B: Write readme.md
+#### User Story 8B: Write readme.md
 
 **Manual Steps:**
 
@@ -708,6 +719,7 @@ The following pages have been tested:
 * Information
 * Login/Register
 * 403/404/500 custom pages
+<br>
 
 ### CSS
 
@@ -715,6 +727,7 @@ The CSS code was validated using [W3 Jigsaw Validator](https://jigsaw.w3.org/css
 At the time of deployment the validation for *style.css* has the following outcome:<br><br>
 
 <img src="static/images/csschecker.png" width="40%"><br><br>
+<br>
 
 ### Javascript
 
@@ -724,6 +737,7 @@ My project only used one function without any argument in my project. It is a fu
     setTimeout(function () {
       $("#msg").alert("close");
     }, 3000);   
+<br>
 
 ### Python
 The python code was tested using [Coding Institutes Python Linter](https://pep8ci.herokuapp.com/).<br>
@@ -761,6 +775,7 @@ The python code was tested using [Coding Institutes Python Linter](https://pep8c
 <img src="static/images/test_viewchecker.png" width="60%"><br><br>
 
 </details>
+<br>
 
 ### Accesibility 
 The accesibility of the website was tested with [Wave](https://wave.webaim.org/)
@@ -783,3 +798,42 @@ Throughout the all pages there is an Alert due to a "Home" link in the navbar th
 <summary>Login Page</summary>
 <img src="static/images/accessibility-signin.png" width="50%"><br><br>
 </details>
+<br>
+
+### Performance
+The performance of the website was tested with [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/)
+
+**Lighthouse reports:**<br>
+
+<details>
+<summary>Desktop</summary>
+
+<img src="static/images/lighthousedesktop.png" width="60%"><br><br>
+
+</details>
+
+<details>
+<summary>Mobile</summary>  
+
+<img src="static/images/lighthousephone.png" width="60%"><br><br>
+
+</details>
+
+## Bugs 
+
+**Search function**<br>
+- Problems with search function: Either I got all reservations and the search didn't work, or I didn't get any reservations at all, or non-admin users could see all reservations, and so on.
+
+    - Restructuring the get_queryset method in the IndexReservation class in views.py a number of times until I got the logic to work did the trick.
+
+<br>
+
+**Error pages not found**<br>
+- After making my 403, 404 and 500 pages, I can't seem to be able to access them. It only say "A server error occurred.  Please contact the administrator.
+
+   - The misstake was that on every error page, there is  "home"-link. And the href for this link was "{% url 'home' %} when it should be "{% url 'reservation:home' %} so after analysing the server log I finally realised what was going on.
+
+<br>
+<hr>
+
+Back to [README.md](README.md)<br>

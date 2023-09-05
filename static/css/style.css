@@ -38,7 +38,7 @@ h2 {
 }
 
 h3 {
-  font-family: 'Baskerville', serif;
+  font-family: "Baskerville", serif;
   margin-bottom: 30px;
 }
 
@@ -46,7 +46,7 @@ h3 {
   font-size: 1rem;
   font-weight: 500;
   margin-bottom: 0;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 h4 {
@@ -122,7 +122,6 @@ footer {
 .carousel-item {
   height: 80vh;
 }
-
 
 .container {
   max-width: 1200px;
@@ -225,11 +224,10 @@ td a {
 /* CUSTOM MEDIA QUERIES */
 
 @media screen and (max-width: 768px) {
-
   h1 {
     font-size: 4rem;
     margin-bottom: -1rem;
-  }  
+  }
 
   h2 {
     font-size: 2rem;
@@ -240,8 +238,7 @@ td a {
     padding: 1.2rem 2rem;
   }
 
-
- .hero-container {
+  .hero-container {
     height: 50vh;
   }
 
