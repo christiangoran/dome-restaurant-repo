@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Lato", sans-serif;
+  overflow-x: hidden;
 }
 
 /* GENERAL STYLING  */
@@ -122,6 +123,7 @@ footer {
   height: 80vh;
 }
 
+
 .container {
   max-width: 1200px;
   margin-top: 20vh;
@@ -223,6 +225,26 @@ td a {
 /* CUSTOM MEDIA QUERIES */
 
 @media screen and (max-width: 768px) {
+
+  h1 {
+    font-size: 4rem;
+    margin-bottom: -1rem;
+  }  
+
+  h2 {
+    font-size: 2rem;
+    margin-top: 0rem;
+  }
+
+  .hero-text {
+    padding: 1.2rem 2rem;
+  }
+
+
+ .hero-container {
+    height: 50vh;
+  }
+
   .food-container {
     margin: 0 3vw;
   }
