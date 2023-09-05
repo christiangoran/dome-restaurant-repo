@@ -13,9 +13,11 @@ under one main class for learning purposes.
 
 class ReservationFormTestCase(TestCase):
     """
-    All of these tests are made to test the ReservationForm (Hello Captain Obvious)
+    All of these tests are made to test the ReservationForm
+    (Hello Captain Obvious)
     #1 I setup a user
-    #2 I setup a number of tables for the restaurant that can be used in the test
+    #2 I setup a number of tables for the restaurant that
+    can be used in the test
     """
 
     def setUp(self):
@@ -69,10 +71,12 @@ class ReservationFormTestCase(TestCase):
         })
         self.assertFalse(form.is_valid())
         self.assertEqual(form.errors, {'__all__': [
-                         'Sorry we do not have a table with that capacity available']})
+                         'Sorry we do not have a table'
+                         ' with that capacity available']})
 
     def test_all_tables_reserved(self):
-        # Test to see if we get the right error message when all tables are reserved
+        # Test to see if we get the right error
+        # message when all tables are reserved
 
         # Creating 5 reservations first so that all tables are reserved
         Reservation.objects.create(
@@ -132,12 +136,19 @@ class ReservationFormTestCase(TestCase):
 
         self.assertFalse(form.is_valid())  # The form should be invalid
 
-        expected_error = 'Sorry we do not have a table available for that date and time'
+        expected_error = ('Sorry we do not have a table'
+                          ' available for that date and time')
         actual_error = str(form.errors['__all__'][0])
         self.assertEqual(expected_error, actual_error)
 
     def test_fields_are_explicit_in_form_metaclass(self):
-        # Test to see if the fields are explicitly defined in the form metaclass
+        # Test to see if the fields are explicitly
+        # defined in the form metaclass
         form = ReservationForm()
         self.assertEqual(form.Meta.fields, [
-                         'name', 'customer_email', 'date', 'time', 'notes', 'number_of_guests'])
+                         'name',
+                         'customer_email',
+                         'date', 'time',
+                         'notes',
+                         'number_of_guests'
+                         ])

@@ -11,15 +11,29 @@ class ReservationForm(forms.ModelForm):
 
     class Meta:
         model = Reservation
-        fields = ['name', 'customer_email', 'date', 'time',
-                  'notes', 'number_of_guests']
+        fields = [
+            'name', 'customer_email', 'date', 'time',
+            'notes', 'number_of_guests'
+        ]
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'customer_email': forms.TextInput(attrs={'class': 'form-control'}),
-            'date': DateInput(attrs={'class': 'form-control', 'type': 'date'}),
-            'notes': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
-            'number_of_guests': forms.TextInput(attrs={'class': 'form-control', 'type': 'number', 'min': 1, 'max': 8}),
-
+            'customer_email': forms.TextInput(
+                attrs={'class': 'form-control'}
+            ),
+            'date': DateInput(
+                attrs={'class': 'form-control', 'type': 'date'}
+            ),
+            'notes': forms.Textarea(
+                attrs={'class': 'form-control', 'rows': 3}
+            ),
+            'number_of_guests': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'type': 'number',
+                    'min': 1,
+                    'max': 8
+                }
+            ),
         }
 
     def clean(self):
@@ -48,8 +62,11 @@ class ReservationForm(forms.ModelForm):
         # Iterate over bookings to get tables not booked
         new_tables_with_capacity = []
         for table in tables_with_capacity:
-            if not any(table.table_number ==
-                       booking.table.table_number for booking in bookings_on_requested_date):
+            is_table_booked = any(
+                table.table_number == booking.table.table_number
+                for booking in bookings_on_requested_date
+            )
+            if not is_table_booked:
                 new_tables_with_capacity.append(table)
 
         tables_with_capacity = new_tables_with_capacity
@@ -67,7 +84,9 @@ class ReservationForm(forms.ModelForm):
 
         if bookings_on_requested_date.count() >= 5:
             raise ValidationError(
-                'Sorry we do not have a table available for that date and time')
+                'Sorry we do not have a table'
+                ' available for that date and time'
+            )
 
         if not tables_with_capacity:
             raise ValidationError(
@@ -75,18 +94,24 @@ class ReservationForm(forms.ModelForm):
 
 
 class SearchReservationForm(forms.Form):
-    booking_email = forms.EmailField(label='Search Booking Email', required=False, widget=forms.TextInput(
-        attrs={
-            'autocomplete': 'off',
-            'aria-label': 'Search Booking by Email',
-            'placeholder': 'Search Booking Email',
-            'class': 'form-control'
-        }))
-    booking_date = forms.DateField(label='Search Booking Date', required=False, widget=forms.DateInput(
-        attrs={
-            'class': 'form-control',
-            'type': 'date',
-            'autocomplete': 'off',
-            'aria-label': 'Search Bookings by date',
-            'placeholder': 'Search Booking Date',
-        }))
+    booking_email = forms.EmailField(
+        label='Search Booking Email',
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                'autocomplete': 'off',
+                'aria-label': 'Search Booking by Email',
+                'placeholder': 'Search Booking Email',
+                'class': 'form-control'
+            }))
+    booking_date = forms.DateField(
+        label='Search Booking Date',
+        required=False,
+        widget=forms.DateInput(
+            attrs={
+                'class': 'form-control',
+                'type': 'date',
+                'autocomplete': 'off',
+                'aria-label': 'Search Bookings by date',
+                'placeholder': 'Search Booking Date',
+                }))

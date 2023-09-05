@@ -40,7 +40,7 @@ class InformationView(generic.TemplateView):
 
 class IndexReservation(LoginRequiredMixin, ListView):
     template_name = 'view_reservations.html'
-    login_url = '/accounts/login'  # If user is not logged in, redirect to /login
+    login_url = '/accounts/login'  # If user not logged in, redirect > /login
     context_object_name = 'reservations'
     model = Reservation
 
@@ -145,7 +145,8 @@ class UpdateReservation(generic.edit.UpdateView):
 
         messages.success(
             self.request,
-            f'Booking updated for {guests} guests on {date} at {form.instance.get_time_display()}'
+            f'Booking updated for {guests} guests on {date} at '
+            f'{form.instance.get_time_display()}'
         )
 
         return super(UpdateReservation, self).form_valid(form)
@@ -171,7 +172,8 @@ class DeleteReservation(generic.edit.DeleteView):
         reservation = self.get_object()
         messages.success(
             self.request,
-            f'Booking cancelled for {reservation.number_of_guests} guests on {reservation.date} at {reservation.get_time_display()}'
+            f'Booking cancelled for {reservation.number_of_guests} '
+            f'guests on {reservation.date} at {reservation.get_time_display()}'
         )
         return super().delete(request, *args, **kwargs)
 

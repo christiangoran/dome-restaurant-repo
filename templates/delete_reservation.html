@@ -1,24 +1,26 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="row">
-  <div class="col-md-4 col-sm-6 col-10 mx-auto">
-    <div class="text-center">
-      <h2>Delete Reservation</h2>
-      <p>Are you sure you want to delete this reservation?</p>
-    </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-sm-6 col-10 mx-auto">
+      <div class="text-center">
+        <h2>Delete Reservation</h2>
+        <p>Are you sure you want to delete this reservation?</p>
+      </div>
 
-    <form action="" method="POST">
-      {% csrf_token %}
-      <div class="text-center">
-        <input type="submit" class="btn btn-danger btn-cancel" value="Delete" />
-      </div>
-      <div class="text-center">
-        <button class="btn btn-success btn-cancel">
-          <a href="{% url 'reservation:view' %}">Cancel</a>
-        </button>
-      </div>
-    </form>
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="text-center">
+          <input type="submit" class="btn btn-danger btn-cancel" value="Delete" />
+        </div>
+        <div class="text-center">
+          <button class="btn btn-success btn-cancel">
+            <a href="{% url 'reservation:view' %}">Cancel</a>
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 

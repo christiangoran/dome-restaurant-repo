@@ -683,3 +683,81 @@ This document outlines the testing procedures and acceptance criteria for the Re
 **Outcome:**
 
 - Pass
+
+
+## Browser Testing
+The website was tested on different browser for assuring the features work accordingly.
+* Safari
+* Chrome
+* Firefox
+* Edge
+* Opera
+
+## Code Validation
+### HTML
+
+The html code of the website was validated using [W3 Markup Validator](https://validator.w3.org/).<br>
+At the time of deployment the validation have the following outcome:<br><br>
+
+<img src="static/images/htmlchecker.png" width="40%"><br><br>
+
+The following pages have been tested:
+* Home
+* Menu
+* Reservations
+* Information
+* Login/Register
+* 403/404/500 custom pages
+
+### CSS
+
+The CSS code was validated using [W3 Jigsaw Validator](https://jigsaw.w3.org/css-validator/)<br>
+At the time of deployment the validation for *style.css* has the following outcome:<br><br>
+
+<img src="static/images/csschecker.png" width="40%"><br><br>
+
+### Javascript
+
+My project only used one function without any argument in my project. It is a function that removes the user notification windows after three seconds and is written straight into the base.html file since I considered it unecessary with a separate js file for it.
+
+    
+    setTimeout(function () {
+      $("#msg").alert("close");
+    }, 3000);   
+
+### Python
+The python code was tested using [Coding Institutes Python Linter](https://pep8ci.herokuapp.com/).<br>
+
+**Pep8 results:**<br>
+<details>
+<summary>Reservation app</summary>
+
+* **apps.py**<br>
+
+<img src="static/images/appscheck.png" width="60%"><br><br>
+
+* **urls.py**<br>
+
+<img src="static/images/urlschecker.png" width="60%"><br><br>
+
+* **views.py**<br>
+
+<img src="static/images/viewcheck.png" width="60%"><br><br>
+
+* **forms.py**<br>
+
+<img src="static/images/formscheck.png" width="60%"><br><br>
+
+* **models.py**<br>
+
+<img src="static/images/modelscheck.png" width="60%"><br><br>
+
+* **test_forms.py**<br>
+
+<img src="static/images/test_formschecker.png" width="60%"><br><br>
+
+* **test_views.py**<br>
+
+<img src="static/images/test_viewchecker.png" width="60%"><br><br>
+
+</details>

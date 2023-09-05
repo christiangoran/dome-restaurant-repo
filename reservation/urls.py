@@ -13,6 +13,10 @@ urlpatterns = [
     path('create/', views.CreateReservation.as_view(), name='create'),
     path('update/<int:pk>/', views.UpdateReservation.as_view(), name='update'),
     path('delete/<int:pk>/', views.DeleteReservation.as_view(), name='delete'),
-    path('login/', auth_views.LoginView.as_view(template_name='account/login.html'), name='login'),
+    path(
+        'login/',
+        auth_views.LoginView.as_view(template_name='account/login.html'),
+        name='login'
+        ),
     path('signup/', views.SignupView, name='signup'),
 ]

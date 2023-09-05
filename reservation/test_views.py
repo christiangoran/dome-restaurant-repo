@@ -65,14 +65,17 @@ class TestIndexReservationView(BaseTest):
 
     def test_if_user_not_logged_in_redirect_to_login(self):
         response = self.client.get('/view/')
-        # Django's LoginRequiredMixin seem to appends a ?next= parameter to the URL to
+        # Django's LoginRequiredMixin seem to appends a
+        # ?next= parameter to the URL to
         # keep track of where to send the user back after they have logged in.
         # This is why you see the ?next=%2Fview%2F part here below
 
         # I also removed the response context from the test since
         # I kept getting a 301 instead of an expected 200
         self.assertRedirects(
-            response, '/login?next=%2Fview%2F', fetch_redirect_response=False)
+            response, '/accounts/login?next=%2Fview%2F',
+            fetch_redirect_response=False
+        )
 
     def test_if_user_is_staff_return_all_reservations(self):
         self.client.login(username='Ms Doubtfire', password='HelloDear')
@@ -92,16 +95,24 @@ class TestIndexReservationView(BaseTest):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context['reservations']), 1)
         self.assertEqual(
-            response.context['reservations'][0].customer_email, 'mcspank2003@hotmail.com')
+            response.context['reservations'][0].customer_email,
+            'mcspank2003@hotmail.com'
+        )
 
     def test_search_by_date(self):
         self.client.login(username='Ms Doubtfire', password='HelloDear')
         response = self.client.get(
-            '/view/', {'booking_date': datetime.date.today() + datetime.timedelta(days=1)})
+            '/view/',
+            {
+                'booking_date':
+                    datetime.date.today() + datetime.timedelta(days=1)
+            }
+        )
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.context['reservations']), 1)
-        self.assertEqual(response.context['reservations'][0].date, datetime.date.today(
-        ) + datetime.timedelta(days=1))
+        self.assertEqual(
+            response.context['reservations'][0].date,
+            datetime.date.today() + datetime.timedelta(days=1))
 
 
 class TestCreateReservationView(BaseTest):
