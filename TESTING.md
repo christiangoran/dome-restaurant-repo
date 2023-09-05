@@ -761,3 +761,25 @@ The python code was tested using [Coding Institutes Python Linter](https://pep8c
 <img src="static/images/test_viewchecker.png" width="60%"><br><br>
 
 </details>
+
+### Accesibility 
+The accesibility of the website was tested with [Wave](https://wave.webaim.org/)
+Throughout the all pages there is an Alert due to a "Home" link in the navbar that is situated next to the company-logo that also works as a "home"-link. I decided to ignore this alert to make it easier for the user to find their way back to the starting page.
+
+**Wave results:**
+<details>
+<summary>Home Page</summary>
+<img src="static/images/accessibility-home.png" width="50%"><br><br>
+</details>
+<details>
+<summary>Menu Page</summary>
+<img src="static/images/accessibility-menu.png" width="50%"><br><br>
+</details>
+<details>
+<summary>Information Page</summary>
+<img src="static/images/accessibility-info.png" width="50%"><br><br>
+</details>
+<details>
+<summary>Login Page</summary>
+<img src="static/images/accessibility-signin.png" width="50%"><br><br>
+</details>
