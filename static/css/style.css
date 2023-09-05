@@ -11,6 +11,13 @@ h1 {
   margin-bottom: 10px;
 }
 
+.sub-page-title {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
 h2 {
   font-size: 3rem;
   font-weight: 600;
@@ -99,6 +106,7 @@ footer {
 .container {
   max-width: 1200px;
   margin-top: 20vh;
+  margin-bottom: 20vh;
 }
 
 .container-message {
@@ -163,6 +171,10 @@ td a {
 
 .padding {
   padding: 5vh 5vw;
+}
+
+.column-padding {
+  padding: 0 5vw;
 }
 
 .menu-container {
