@@ -24,6 +24,11 @@ h2 {
   margin-top: -2rem;
 }
 
+.footer-h2 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
 h3 {
   font-family: 'Baskerville', serif;
   margin-bottom: 30px;
