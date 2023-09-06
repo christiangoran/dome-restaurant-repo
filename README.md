@@ -16,11 +16,12 @@
   * [Agile Methodology](#agile-methodology)
   * [Features](#features)
     + [Existing Features](#existing-features)
+      - [Client bookints management](#client-bookings-management)
+      - [Staff bookings management](#staff-bookings-management)
       - [Create bookings](#create-bookings)
       - [Menu](#menu)
-      - [Profiles](#profiles)
-      - [Staff bookings management](#staff-bookings-management)
-    + [Future Feature Considerations](#future-feature-considerations)
+      - [Information](#information)
+    + [Potential Future Features](#pontential-future-features)
   * [Responsive Layout and Design](#responsive-layout-and-design)
   * [Tools Used](#tools-used)
     + [Python packages](#python-packages)
@@ -178,8 +179,13 @@ Two diagrams were created to represent the relationships between the tables. The
 * **Hover effects**<br>
 <details>
   <summary>NavBar element hover and active effect</summary>
-<img src="static/images/hover_effect.gif"><br>
+<img src="static/images/hover_effect.gif" width="40%"><br>
 </details>
+<details>
+  <summary>Bootstrap standard button hover effect</summary>
+<img src="static/images/buttonhover.gif" width="40%"><br>
+</details>
+<br>
 <br>
 
 ## Agile Methodology
@@ -244,7 +250,32 @@ All epics and user stories implementation progress was registered using [GitHub]
 
 ## Features
 
-### Existing Features<hr>
+### Existing Features and sub-pages<hr>
+
+#### Client bookings management
+
+Every client that is authenticated can access the *Reservation* page where they have an overview over their reservations.
+* From this view they can select to:
+    * Create a new reservation;<br>
+    * Edit an existing reservation;<br>
+    * Delete a reservation;<br>
+<br><br>
+
+<img src="static/images/clientlist.png" width="30%"><br><br>
+
+#### Staff bookings management
+
+Staff users that are authenticated can access the *Reservation* page where they have an overview of all the reservations made, as well as an additional feature of being able to search for reservations based on date or email-address.
+* From this view they can select to:
+    * Create a new reservation;<br>
+    * Edit an existing reservation;<br>
+    * Delete a reservation;<br>
+    * Search for specific reservations<br>
+<br><br>
+
+<img src="static/images/stafflist.png" width="30%"><br><br>
+
+
 
 #### Create bookings
 
@@ -254,7 +285,7 @@ Every user that is authenticated can access the *Reservation* page for making a 
     * The Date value should not be less than the current day;<br>
     * Entering Name, date and number of people is required;<br>
     * Maximum number of guests for a reservation is 8 people;<br>
-    * The used can choose times from a list;
+    * The user can choose times from a list;
       * 1: 12:00 - 12:45
       * 2: 14:00 - 15:45
       * 3: 16:00 - 17:45
@@ -268,16 +299,36 @@ Every user that is authenticated can access the *Reservation* page for making a 
 
 #### Menu
 
+The "Menu" section of our Django-based restaurant app allows users to easily browse through categorized dishes.
+
+<img src="static/images/menu.png" width="30%"><br><br>
+
+#### Information
+
+The "Information" page serves as a one-stop destination for all essential details about the Dome Restaurant. It features our opening hours, contact information, and physical location. 
+
+<img src="static/images/information.png" width="30%"><br><br>
 
 
+### Pontential Future Features
 
-#### Profiles
+* Add a feature where staff can add, remove and manage menu entries in the front-end interface. 
 
-#### Staff bookings management
+* Email confirmation for users when a reservation is made, to decrease the risk of the reservation becoming a so called no-show.
 
-### Future Feature Considerations
+* Password reset function where the user will get an email with a reset-password-link in case current password is forgotten.
 
 ## Responsive Layout and Design
+The project design has been adapted to all types of devices using Bootstrap predefined breakpoints. For intermediate devices where the design didn't fit accordingly, a custom breakpoint of max-width of 768px.
+
+**Tested devices:**
+
+    - iPhone 11 
+    - iPhone 13
+    - iPhone 6/7/8 
+    - Ipad
+    - Samsung Galaxy S8 
+    - MacBook pro 16'' M2
 
 ## Tools Used
 
