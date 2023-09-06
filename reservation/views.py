@@ -39,6 +39,11 @@ class InformationView(generic.TemplateView):
 
 
 class IndexReservation(LoginRequiredMixin, ListView):
+    """
+    I've used a lot of my mentors Gareth McGirr's code for this view with some
+    modifications to suit my project. His code can be found here:
+    https://github.com/Gareth-McGirr/Portfolio-Project-4-SizzleAndSteak
+    """
     template_name = 'view_reservations.html'
     login_url = '/accounts/login'  # If user not logged in, redirect > /login
     context_object_name = 'reservations'
@@ -75,6 +80,11 @@ class IndexReservation(LoginRequiredMixin, ListView):
 
 
 class CreateReservation(generic.edit.CreateView):
+    """
+    I've used a lot of my mentors Gareth McGirr's code for this view with some
+    modifications to suit my project. His code can be found here:
+    https://github.com/Gareth-McGirr/Portfolio-Project-4-SizzleAndSteak
+    """
     template_name = 'create_reservation.html'
     model = Reservation
     form_class = ReservationForm
