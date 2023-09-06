@@ -1,5 +1,6 @@
 {% extends "base.html" %} {% load static %} {% block content %}
-<div class="row">
+
+<div class="row reservation-container">
   <div class="col-10 col-md-8 text-center reservations-table m-3 mx-auto">
     {% if user.is_authenticated %} {% if request.user.is_staff %}
 
@@ -22,6 +23,7 @@
         </button>
       </form>
     </div>
+
 
     {% endif %}
 

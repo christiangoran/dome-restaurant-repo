@@ -175,6 +175,13 @@ Two diagrams were created to represent the relationships between the tables. The
 
 #### Visual Effects
 
+* **Hover effects**<br>
+<details>
+  <summary>NavBar element hover and active effect</summary>
+<img src="static/images/hover_effect.gif"><br>
+</details>
+<br>
+
 ## Agile Methodology
 This project was developed using the Agile methodology.<br>
 All epics and user stories implementation progress was registered using [GitHub](https://github.com/). As the user stories were accomplished, they were moved in the GitHub Kanban board from **ToDo**, to **In Progress**, **Done** and **Not Implemented** lists. 
@@ -239,10 +246,30 @@ All epics and user stories implementation progress was registered using [GitHub]
 
 ### Existing Features<hr>
 
-
 #### Create bookings
 
+Every user that is authenticated can access the *Reservation* page for making a reservation. This feature provides a form where the user can fill in the reservation details.
+* The form is for selecting the date and time interval of the booking.
+    The inputs are validated after the following rules:
+    * The Date value should not be less than the current day;<br>
+    * Entering Name, date and number of people is required;<br>
+    * Maximum number of guests for a reservation is 8 people;<br>
+    * The used can choose times from a list;
+      * 1: 12:00 - 12:45
+      * 2: 14:00 - 15:45
+      * 3: 16:00 - 17:45
+      * 4: 18:00 - 19:45
+      * 5: 20:00 - 21:45<br><br>
+
+   
+<img src="static/images/create_reservation.png" width="30%"><br><br>
+
+* If the reservation is submitted successfully, a success message will appear   
+
 #### Menu
+
+
+
 
 #### Profiles
 

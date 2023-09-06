@@ -139,6 +139,14 @@ footer {
   margin-right: 1vw;
 }
 
+.footer-links {
+  color: transparent;
+}
+
+i {
+  color: black;
+}
+
 /* FORMS */
 
 td,
@@ -158,6 +166,10 @@ td a {
 .button-style {
   padding: 10px;
   margin: 10px;
+}
+
+.reservation-container {
+  margin: 10vh 0;
 }
 
 /* MENU */
