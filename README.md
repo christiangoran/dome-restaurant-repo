@@ -1,6 +1,8 @@
 # Dome Restaurant 
 
-<img src="https://res.cloudinary.com/dzw4z92rn/image/upload/v1692852991/static/images/bg.c2eb0cc111ba.jpg" ><br>
+<img src="static/images/screen_mockup.png" ><br>
+<hr>
+Dome Restaurant is a part of Dome Lombok, a resort situated on the island of Lombok, Indonesia. This project was started in 2013 by me and a friend - David Paulin. I thought this would be a good starting platform for my fourth Project with Code Institute, a restaurant booking website to solidify my newly gained knowledge in the Django Framework.
 <hr>
 
 ## Table of contents
@@ -332,6 +334,29 @@ The project design has been adapted to all types of devices using Bootstrap pred
 
 ## Tools Used
 
+## Tools Used
+
+[GitHub](https://github.com/) - used for hosting the source code of the program<br>
+[Visual Studio](https://code.visualstudio.com/) - for writing and testing the code<br>
+[Heroku](https://dashboard.heroku.com/) - used for deploying the project<br>
+[ElephantSQL](https://www.elephantsql.com/) - For PostgreSQL database<br>
+[Balsamiq](https://balsamiq.com/wireframes/) - for creating the wireframes<br>
+[LucidChart](https://www.lucidchart.com/) - used for creating the Flowchart and Database relational schema<br>
+[Favicon.io](https://favicon.io/) - used for generating the website favicon<br>
+[TinyPNG](https://tinypng.com/) - for compressing the images<br>
+[Grammarly](https://app.grammarly.com/) - for correcting text content<br>
+[Font Awesome](https://fontawesome.com/) - for creating atractive UX with icons<br>
+[Bootstrap5](https://getbootstrap.com/) - for adding predifined styled elements and creating responsiveness<br>
+[Google Fonts](https://fonts.google.com/) - for typography<br>
+[Code Institute Pylint](https://pep8ci.herokuapp.com/) - used for validating the python code<br>
+[HTML - W3C HTML Validator](https://validator.w3.org/#validate_by_uri+with_options) - used for validating the HTML<br>
+[CSS - Jigsaw CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_uri) - used for validating the CSS<br>
+[Firefox dev tools](https://firefox-source-docs.mozilla.org/devtools-user/page_inspector/how_to/open_the_inspector/index.html) - for debugging the project<br>
+[Chrome Dev Tools](https://developer.chrome.com/docs/devtools/) - for debugging the project<br>
+[W.A.V.E.](https://wave.webaim.org/) - for testing accessibility<br>
+[Cloudinary](https://cloudinary.com/) - for storing static data<br>
+Chrome LightHouse extension - for testing performance<br>
+
 ### Python packages
 
 * Django (Framework)
@@ -390,8 +415,23 @@ For creating a clone of the repository on your local machine, use<b>Clone</b>:
 
 ### Content
 
+Inspiration is taken from my own project in Indonesia - [Dome Lombok](https://www.dome-lombok.com)
+
 ### Media
+
+All media used is created by myself.
 
 ### Code
 
+* Further studies with [Net Ninja](https://www.youtube.com/watch?v=n-FTlQ7Djqc&list=PL4cUxeGkcC9ib4HsrXEYpQnTOTZE1x0uc)
+* Help with Bootstrap from their own excellent [documentation](https://getbootstrap.com)
+* Database setup and much more with [Codemy.com](https://www.youtube.com/watch?v=A1nqCgAM6CE)
+* Automated testing with [CodingEntrepeneurs](https://www.youtube.com/watch?v=5E_xLmQXOZg)
+* Code from Gareth McGirr's [project](https://github.com/Gareth-McGirr/Portfolio-Project-4-SizzleAndSteak) used and customized for table verification
+* A lot of time has been spent on re-watching Code Institutes splendid videos on Agile Methodologies, Django and Python to find solutions to problems.
+
 ## Acknowledgements
+
+- Code Institute for providing a great course and support.<br>
+- My mentor Gareth McGirr for great guidance and for wanting to help me more than expected of him  with the problems encountered during the development of the project<br>
+- Slack community for great involvement in helping each other<br>
