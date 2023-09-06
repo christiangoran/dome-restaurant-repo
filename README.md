@@ -237,7 +237,8 @@ All epics and user stories implementation progress was registered using [GitHub]
 
 ## Features
 
-### Existing Features
+### Existing Features<hr>
+
 
 #### Create bookings
 
