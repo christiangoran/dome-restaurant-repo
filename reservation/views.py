@@ -81,9 +81,21 @@ class IndexReservation(LoginRequiredMixin, ListView):
 
 class CreateReservation(generic.edit.CreateView):
     """
-    I've used a lot of my mentors Gareth McGirr's code for this view with some
+    A class based view for creating a reservation.
+
+    Attributes:
+    - template_name: The template used for the view.
+    - model: The model used for the view.
+    - form_class: The form used for the view.
+    - success_url: The url to redirect to after a successful form submission.
+
+    Methods:
+    - form_valid: This method is called when valid form data has been POSTed.
+    
+    I've used a lot of my mentors Gareth McGirr's code for this class with some
     modifications to suit my project. His code can be found here:
     https://github.com/Gareth-McGirr/Portfolio-Project-4-SizzleAndSteak
+
     """
     template_name = 'create_reservation.html'
     model = Reservation
@@ -138,7 +150,9 @@ class UpdateReservation(generic.edit.UpdateView):
     success_url = reverse_lazy('reservation:view')
 
     def get_object(self, queryset=None):
-        """This method returns the object that the view will display."""
+        """
+        This method returns the object that the view will display.
+        """
         reservation = super().get_object(queryset=queryset)
         if self.request.user.is_staff or self.request.user == reservation.user:
             return reservation

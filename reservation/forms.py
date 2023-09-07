@@ -6,6 +6,30 @@ import datetime
 
 
 class ReservationForm(forms.ModelForm):
+    """
+    A  ModelForm for handling table reservations.
+
+    Attributes:
+        time (ChoiceField): A choice field for selecting the booking time.
+        Meta: Meta class for specifying model and fields.
+
+    Methods:
+        clean: Custom validation for the form.
+
+    In the form the folowing fields are included:
+        - name: The name of the person making the reservation. *required*
+        - customer_email: The email address of the customer.
+        - date: The date of the reservation. *required*
+        - time: The time of the reservation. *required*
+        - notes: Additional notes or special requests.
+        - number_of_guests: The number of guests for the reservation. *required*
+
+    The form also performs custom validation to check:
+        - If the selected date is in the future.
+        - If there are tables available for the selected date and time.
+        - If there are tables with sufficient capacity for the number of guests.
+    """
+    
     time = forms.ChoiceField(choices=BOOKING_TIME, widget=forms.Select(
         attrs={'class': 'form-control'}))
 
@@ -94,6 +118,26 @@ class ReservationForm(forms.ModelForm):
 
 
 class SearchReservationForm(forms.Form):
+    """
+    This form is for searching existing table reservations.
+    Available in staff accounts only.
+
+    Attributes:
+        booking_email (EmailField): An email field for searching by booking email.
+        booking_date (DateField): A date field for searching by booking date.
+
+    The form includes these fields:
+        - booking_email: The email address used for the reservation.
+        - booking_date: The date of the reservation.
+
+    Both fields are optional and can be used to filter reservations based on either or both criteria.
+
+    The form uses custom widgets with specific attributes for better user experience:
+        - 'autocomplete': turned off for both fields.
+        - 'aria-label': for accessibility.
+        - 'placeholder': to guide the user.
+        - 'class': for styling.
+    """
     booking_email = forms.EmailField(
         label='Search Booking Email',
         required=False,

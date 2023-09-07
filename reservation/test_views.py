@@ -12,6 +12,14 @@ instead of having all tests in one class for learning purposes
 
 
 class BaseTest(TestCase):
+    """
+    The purpose of this class is to reduce code duplication by 
+    providing a common setup that can be inherited by multiple test classes.
+
+    The class creates two users, one staff user and one non-staff user.
+    It also creates two tables and one reservation.
+
+    """
 
     def setUp(self):
         self.user = User.objects.create_user(
@@ -40,6 +48,10 @@ class BaseTest(TestCase):
 
 
 class TestHomeView(TestCase):
+    """
+    Tests the home view for correct status code, template, and content.
+
+    """
 
     def test_home_view(self):
         response = self.client.get('/')
@@ -49,7 +61,9 @@ class TestHomeView(TestCase):
 
 
 class TestMenuView(TestCase):
-
+    """
+    Tests the menu view for correct status code, template, and content.
+    """
     def test_menu_view(self):
         response = self.client.get('/menu/')
         self.assertEqual(response.status_code, 200)
@@ -58,6 +72,22 @@ class TestMenuView(TestCase):
 
 
 class TestIndexReservationView(BaseTest):
+    """
+    Test the Index Reservation View.
+
+    Tests goes over:
+    - Basic view accessibility.
+    - Redirection for unauthenticated users.
+    - Staff user's ability to see all reservations.
+    - Non-staff user's ability to see only their reservations.
+    - Search functionality by email and date.
+
+    The tests makes sure that that:
+    - The view is accessible when the user is logged in.
+    - The view redirects unauthenticated users to the login page.
+    - The view returns all reservations when the user is staff.
+
+    """
 
     def test_index_reservation_view(self):
         response = self.client.get('/view/')
@@ -116,6 +146,19 @@ class TestIndexReservationView(BaseTest):
 
 
 class TestCreateReservationView(BaseTest):
+    """
+    Test suite for the Create Reservation View.
+
+    Tests goes over:
+    - View accessibility and template usage.
+    - Reservation creation functionality.
+
+    The tests makes sure that that:
+    - The view is accessible when the user is logged in.
+    - The correct template is used for the view.
+    - A new reservation can be successfully created.
+    """
+
 
     def test_create_reservation_view(self):
         self.client.login(username='Mr McSchmoff',
@@ -140,6 +183,19 @@ class TestCreateReservationView(BaseTest):
 
 
 class TestUpdateReservationView(BaseTest):
+    """
+    Test for the update reservation view.
+
+    Tests goes over:
+    - View accessibility and template usage.
+    - Reservation update functionality.
+
+    The tests makes sure that that:
+    - The view is accessible when the user is logged in.
+    - The correct template is used for the view.
+    - A reservation can be successfully updated.
+
+    """
 
     def test_update_reservation_view(self):
         self.client.login(username='Mr McSchmoff',
@@ -165,6 +221,19 @@ class TestUpdateReservationView(BaseTest):
 
 
 class TestDeleteReservationView(BaseTest):
+    """
+    Test for the delete reservation view.
+    
+    Tests goes over:
+    - View accessibility and template usage.
+    - Reservation deletion functionality.
+
+    The tests makes sure that that:
+    - The view is accessible when the user is logged in.
+    - The correct template is used for the view.
+    - A reservation can be successfully deleted.
+    
+    """
 
     def setUp(self):
         super().setUp()
