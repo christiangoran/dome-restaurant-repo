@@ -187,7 +187,7 @@ class DeleteReservation(generic.edit.DeleteView):
         if self.request.user.is_staff or self.request.user == reservation.user:
             return reservation
         else:
-            raise Http404("You are not authorized to edit this reservation.")
+            raise Http403("You are not authorized to edit this reservation.")
 
     def delete(self, request, *args, **kwargs):
         """

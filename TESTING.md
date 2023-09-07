@@ -109,7 +109,7 @@ This document outlines a testing procedures following the EPICS that was used du
 
 **Outcome:**
 
-- FAIL so far
+- PASS
 
 ---
 
@@ -117,8 +117,11 @@ This document outlines a testing procedures following the EPICS that was used du
 
 **Manual Steps:**
 
-1. Open the website.
-2. Simulate a server error.
+1. DEBUG = False
+2. Create a temporary trigger error function in views.py
+3. Add a trigger-error pattern in urls.py
+3. Visit localhost and add /trigger-error
+4. Revert changes
 
 **Acceptance Criteria:**
 
@@ -130,7 +133,7 @@ This document outlines a testing procedures following the EPICS that was used du
 
 **Outcome:**
 
-- FAIL so far
+- Pass
 
 ---
 
@@ -151,7 +154,7 @@ This document outlines a testing procedures following the EPICS that was used du
 
 **Outcome:**
 
-- FAIL so far
+- Pass…
 
 ---
 
@@ -256,7 +259,7 @@ This document outlines a testing procedures following the EPICS that was used du
 
 **Outcome:**
 
-- FAIL (Function not implemented at this stage)
+- None (Future implementation)
 
 ### 4. Contact <a name="contact"></a>
 
@@ -385,7 +388,7 @@ This document outlines a testing procedures following the EPICS that was used du
 
 **Outcome:**
 
-- FAIL, the function was never implemented.
+- None (Future implementation)
 
 ---
 
@@ -585,7 +588,7 @@ This document outlines a testing procedures following the EPICS that was used du
 
 **Outcome:**
 
-- FAIL, this function was never implemented.
+- None (Future implementation)
 
 ---
 

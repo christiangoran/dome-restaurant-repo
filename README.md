@@ -120,7 +120,7 @@ The goal for the project is to create a website with good UX/UI in mind that is 
 * Add photos that depict some of the food offered at the restaurant.
 
 **Features for Upgraded Experience**<br>
-* Create a reservation section that allows the users to see all the reservations  available for a specific date and time:
+* Create a reservation section that allows the users to see all the tables  available for a specific date and time:
 * Create a Menu feature that displays all the menu information;
 * Create a Profile page for the user to see his upcoming bookings and favourite meals;
 * Create a staff-member account to manage all the bookings for all the users;
@@ -312,7 +312,7 @@ The "Information" page serves as a one-stop destination for all essential detail
 <img src="static/images/information.png" width="30%"><br><br>
 
 
-### Pontential Future Features
+### Potential Future Features
 
 * Add a feature where staff can add, remove and manage menu entries in the front-end interface. 
 
@@ -331,8 +331,6 @@ The project design has been adapted to all types of devices using Bootstrap pred
     - Ipad
     - Samsung Galaxy S8 
     - MacBook pro 16'' M2
-
-## Tools Used
 
 ## Tools Used
 
